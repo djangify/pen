@@ -1,27 +1,44 @@
 from pathlib import Path
+import environ
+import os
+import pymysql 
+
+pymysql.install_as_MySQLdb()
+
+# Initialize environment variables
+env = environ.Env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-v-44&jh@63q66*9xhzm9pxu61zddg=!ytw2lug9ur&j2c9gz1u'
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# Load the .env file
+ENV_FILE = ".env"
+environ.Env.read_env(os.path.join(BASE_DIR, ENV_FILE))
 
+SITE_ID = 1
+
+SECRET_KEY = env("SECRET_KEY", default="your-secret-key-here")
+
+ALLOWED_HOSTS = ['corrisongroup.co.uk', 'www.corrisongroup.co.uk', 'localhost', '127.0.0.1']
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://corrisongroup.co.uk",
+    "https://www.corrisongroup.co.uk",
+    "http://localhost",
+    "http://127.0.0.1",
+]
 
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django.contrib.sitemaps',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -72,10 +89,27 @@ DATABASES = {
     }
 }
 
+# Database
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": env("DATABASE_NAME"),
+#         "USER": env("DATABASE_USER"),
+#         "PASSWORD": env("DATABASE_PASSWORD"),
+#         "HOST": env("DATABASE_HOST", default="127.0.0.1"),
+#         "PORT": env("DATABASE_PORT", default="3306"),
+#         "OPTIONS": {
+#             "charset": "utf8mb4",
+#             "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
+#             "use_unicode": True,
+#             "connect_timeout": 10,
+#             "autocommit": True,
+#         },
+#     },
+# }
+
 
 # Password validation
-# https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -91,29 +125,49 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
-
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# WhiteNoise configuration
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# WhiteNoise configuration (if you're using WhiteNoise)
+WHITENOISE_USE_FINDERS = True
+WHITENOISE_MANIFEST_STRICT = False
+
+# Media settings
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
+
+# Media File Headers
+MEDIA_FILE_SERVE_HEADERS = {
+    'Access-Control-Allow-Origin': '*',
+    'Cache-Control': 'no-cache, must-revalidate'
+}
+
+# Cache Control Headers for Media Files
+MEDIA_FILE_STORAGE_HEADERS = {
+    'Cache-Control': 'no-cache, no-store, must-revalidate',
+    'Pragma': 'no-cache',
+    'Expires': '0'
+}
+
+# File Permissions (if you're handling file uploads)
+FILE_UPLOAD_PERMISSIONS = 0o644
+FILE_UPLOAD_DIRECTORY_PERMISSIONS = 0o755
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -128,3 +182,18 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 20,
 }
+
+# Security Settings
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+USE_X_FORWARDED_HOST = True
+USE_X_FORWARDED_PORT = True
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+SECURE_SSL_REDIRECT = True
+
+# IP Rate limiting settings
+IP_RATE_LIMIT_MAX_ATTEMPTS = 20  # Maximum attempts per IP
+IP_RATE_LIMIT_TIMEOUT = 300  # Reset after 5 minutes (in seconds)
+
+# Session and CSRF settings
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True

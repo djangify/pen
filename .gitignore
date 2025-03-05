@@ -310,6 +310,7 @@ sevenv
 static/src/
 node_modules/
 venv2
+production/
 static
 .htaccess
 .vscode/
