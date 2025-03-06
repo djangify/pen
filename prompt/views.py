@@ -14,7 +14,7 @@ class TagViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = [permissions.AllowAny]
 
 class PromptCategoryViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = PromptCategory.objects.all()
+    queryset = PromptCategory.objects.all().order_by('name')
     serializer_class = PromptCategorySerializer
     permission_classes = [permissions.AllowAny]
 
