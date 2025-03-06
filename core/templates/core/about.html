@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <div class="bg-white shadow-md rounded-lg overflow-hidden">
+        <div class="px-6 py-8 md:p-10">
+            <h1 class="text-3xl font-bold text-gray-900 mb-6">About Pen and I Publishing</h1>
+            
+            <div class="prose prose-lg text-gray-700 mb-10">
+                <p class="mb-4">Welcome to Pen and I Publishing, where we believe that everyone has stories worth telling. We're not about creating polished bestsellers—we're about helping you capture the everyday magic of your life's journey.</p>
+                
+                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">Our Philosophy</h2>
+                <p>Your life is a collection of extraordinary moments disguised as ordinary days. At Pen and I Publishing, we believe these moments deserve to be written down—not necessarily for the world to read, but for you to reflect upon and for your loved ones to treasure.</p>
+                
+                <p>Whether you're jotting down childhood memories, reflecting on life lessons, or simply describing your day, writing is a powerful tool for:</p>
+                <ul class="list-disc pl-6 mb-6">
+                    <li>Personal reflection and growth</li>
+                    <li>Preserving family stories for future generations</li>
+                    <li>Making sense of life's journey</li>
+                    <li>Finding joy in everyday experiences</li>
+                    <li>Creating a legacy that lasts beyond a lifetime</li>
+                </ul>
+                
+                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">What We Offer</h2>
+                <p>Our writing prompt generator helps to spark your memory and imagination. Whether you have five minutes or an hour, our carefully crafted prompts will help you begin writing about the moments that matter.</p>
+                
+                <p>We also offer beautiful, thoughtfully designed journals that make capturing your stories a joy. Our blog provides tips, encouragement, and inspiration for your memoir and journaling journey.</p>
+                
+                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">Our Story</h2>
+                <p>Pen and I Publishing was born from the realisation that too many family stories are lost with each passing generation. We started with a simple mission: to help people preserve their memories in their own words, not for fame or fortune, but for the priceless gift of shared experiences.</p>
+                
+                <p>Based in the UK, we bring a warm, approachable perspective to memoir writing that embraces the British tradition of storytelling with a cup of tea in hand and a focus on the quietly meaningful moments of life.</p>
+                
+                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">Join Us</h2>
+                <p>Whether you're writing for yourself, your children, or your grandchildren yet to be born, we invite you to pick up your pen. Your story matters, and we're here to help you tell it, one prompt at a time.</p>
+            </div>
+            
+            <div class="mt-10 mb-6 text-center">
+                <h3 class="text-xl font-medium text-gray-900 mb-4">Start Your Writing Journey Today</h3>
+                <a href="{% url 'core:home' %}" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-md transition duration-200">
+                    Try Our Prompt Generator
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
