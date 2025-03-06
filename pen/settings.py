@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django_prose_editor',
     'prompt',
     'blog',
+    'core',
 ]
 
 MIDDLEWARE = [

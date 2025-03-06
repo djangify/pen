@@ -8,7 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('prompt.urls')),
     path("blog/", include("blog.urls", namespace="blog")),
-    path('', TemplateView.as_view(template_name='index.html'), name='home'),
+    path('', include('core.urls')), 
 ]
 
 if settings.DEBUG:
