@@ -15,3 +15,23 @@ def home_view(request):
     }
     
     return render(request, 'index.html', context)
+
+def about(request):
+    """
+    View for the About page
+    """
+    context = {
+        'title': 'About Pen and I Publishing',
+        'meta_description': 'Learn about Pen and I Publishing and our mission to help everyone capture their life stories and memories.',
+    }
+    return render(request, 'core/about.html', context)
+
+def notebook(request):
+    """
+    View for the Notebook page
+    """
+    context = {
+        'title': 'Paperback Notebooks by Pen & I Publishing',
+        'meta_description': 'We create lined paperback notebooks to help you capture your life stories and memories.',
+    }
+    return render(request, 'core/paperback_notebook.html', context)
