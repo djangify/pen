@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<div class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+<div class="container mx-auto px-4 py-8">
     <div class="bg-white shadow-md rounded-lg overflow-hidden">
         <div class="px-6 py-8 md:p-10">
             <h1 class="text-3xl font-bold text-gray-900 mb-6">About Pen and I Publishing</h1>
@@ -35,7 +35,25 @@
                 <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">Join Us</h2>
                 <p>Whether you're writing for yourself, your children, or your grandchildren yet to be born, we invite you to pick up your pen. Your story matters, and we're here to help you tell it, one prompt at a time.</p>
             </div>
-            
+  
+            <div class="mt-20 bg-blue-50 rounded-lg p-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Why Our Notebooks?</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Quality Materials</h3>
+                    <p class="text-gray-600">Our paperback notebooks feature high-quality paper that prevents bleed-through and durable bindings built to last.</p>
+                  </div>
+                  <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Thoughtful Design</h3>
+                    <p class="text-gray-600">Each notebook is carefully designed to inspire your writing journey with elegant layouts and beautiful covers.</p>
+                  </div>
+                  <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Perfect Gift</h3>
+                    <p class="text-gray-600">Our notebooks make meaningful gifts for yourself and loved ones who enjoy writing or want to preserve their memories.</p>
+                  </div>
+                </div>
+              </div>
+      
             <div class="mt-10 mb-6 text-center">
                 <h3 class="text-xl font-medium text-gray-900 mb-4">Start Your Writing Journey Today</h3>
                 <a href="{% url 'core:home' %}" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-md transition duration-200">
