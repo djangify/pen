@@ -1,6 +1,6 @@
 # Pen and I Publishing
 
-![Pen and I Publishing Logo](https://raw.githubusercontent.com/djangify/pen/main/pen.penandipublishing.png)
+![Pen and I Publishing Logo][(https://raw.githubusercontent.com/djangify/pen/main/pen.penandipublishing.png)](https://github.com/djangify/pen/blob/3cbcb0a0c28988d2c75fab1ad61e9f66c5e9619c/penandipublishing.png)
 
 ## Overview
 
