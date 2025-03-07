@@ -27,7 +27,8 @@
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 </head>
 <body class="text-lg 2xl:max-w-screen-2xl 2xl:mx-auto 2xl:bg-primary bg-gray-100">
-  {% include 'components/nav.html' %}
+    {% include 'core/partials/_messages.html' %}
+    {% include 'components/nav.html' %}
     <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         {% block content %}{% endblock %}
     </main>
@@ -69,6 +70,19 @@
                 localStorage.setItem('cookieConsent', 'declined');
                 banner.classList.add('hidden');
             });
+        });
+        // Auto-dismiss Django messages after 3 seconds
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                const messages = document.querySelectorAll('[role="alert"]');
+                messages.forEach(function(message) {
+                    message.style.opacity = '0';
+                    message.style.transition = 'opacity 0.3s ease-in-out';
+                    setTimeout(function() {
+                        message.remove();
+                    }, 300);
+                });
+            }, 3000);
         });
     </script>
     

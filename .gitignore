@@ -311,6 +311,7 @@ static/src/
 node_modules/
 venv2
 production/
+json/
 static
 .htaccess
 .vscode/

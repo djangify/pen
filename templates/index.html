@@ -45,6 +45,35 @@
         </div>
     </div>
     
+    <!-- Prompt Card - Initially hidden -->
+    <div id="promptCard" class="bg-white shadow-md rounded-lg p-6 mb-8 hidden">
+        <div class="prose prose-lg max-w-none">
+            <blockquote class="relative p-4 text-xl italic border-l-4 border-blue-600 bg-blue-50 mb-6">
+                <p id="promptText" class="mb-2">Your writing prompt will appear here.</p>
+            </blockquote>
+            
+            <div class="flex flex-wrap justify-between items-center mt-8 mb-4">
+                <div class="mb-2 md:mb-0">
+                    <span class="font-medium text-gray-800">Category:</span>
+                    <span id="promptCategory" class="ml-2">General</span>
+                </div>
+                <div>
+                    <span class="font-medium text-gray-800">Time Required:</span>
+                    <span id="promptDifficulty" class="ml-2">Medium (15-20 minutes)</span>
+                </div>
+            </div>
+            
+            <div class="flex justify-center mt-8">
+                <button id="newPromptBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-200">
+                    Get Another Prompt
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Hidden input to store current prompt ID -->
+    <input type="hidden" id="current-prompt-id" value="">
+    
     <!-- Amazon section to notebooks section -->
     <div class="mt-10 text-center">
         <p class="text-gray-600 mb-4">Need a place to write down your thoughts?</p>
