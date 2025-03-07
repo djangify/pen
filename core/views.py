@@ -35,3 +35,34 @@ def notebook(request):
         'meta_description': 'We create lined paperback notebooks to help you capture your life stories and memories.',
     }
     return render(request, 'core/paperback_notebook.html', context)
+
+def privacy_policy(request):
+    """
+    View for the privacy policy page
+    """
+    context = {
+        'title': 'Privacy Policy for Pen & I Publishing',
+        'meta_description': 'This is the most up to date privacy policy for our website',
+    }
+    return render(request, 'policy/privacy_policy.html', context)
+
+
+def terms_conditions(request):
+    """
+    View for the terms and conditions policy page
+    """
+    context = {
+        'title': 'Terms and Conditions Policy for Pen & I Publishing',
+        'meta_description': 'This is the most up to date terms and conditions policy for our website',
+    }
+    return render(request, 'policy/terms_conditions.html', context)
+
+def advertising_policy(request):
+    """
+    View for the advertising policy page
+    """
+    context = {
+        'title': 'Advertising Policy for Pen & I Publishing',
+        'meta_description': 'This is the most up to date advertising policy for our website',
+    }
+    return render(request, 'policy/advertising_policy.html', context)
