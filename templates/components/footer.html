@@ -7,31 +7,27 @@
                   Home
               </a>
           </div>
-
           <div class="px-5 py-2">
-              <a href="blog:list" class="text-base text-gray-500 hover:text-gray-900">
-                  Blog
+              <a href={% url 'core:terms_conditions' %} class="text-base text-gray-500 hover:text-gray-900">
+                  Terms & Conditions
               </a>
           </div>
-
           <div class="px-5 py-2">
-              <a href="#" class="text-base text-gray-500 hover:text-gray-900">
-                  Notebooks
-              </a>
-          </div>
-
-          <div class="px-5 py-2">
-              <a href={% url 'core:about' %} class="text-base text-gray-500 hover:text-gray-900">
-                  About
-              </a>
-          </div>
-
-          <div class="px-5 py-2">
-              <a href="#" class="text-base text-gray-500 hover:text-gray-900">
-                  Privacy Policy
-              </a>
-          </div>
-      </nav>
+              <a href={% url 'core:advertising_policy' %} class="text-base text-gray-500 hover:text-gray-900">
+                  Advertising Policy
+                </a>
+            </div>
+            <div class="px-5 py-2">
+                <a href="{% url 'core:privacy_policy' %}" class="text-base text-gray-500 hover:text-gray-900">
+                    Privacy Policy
+                </a>
+            </div>
+            <div class="px-5 py-2">
+                <a href="#" class="text-base text-gray-500 hover:text-gray-900">
+                    Notebooks
+                </a>
+            </div>
+        </nav>
       <div class="mt-8 flex justify-center space-x-6">
           <a href="#" class="text-gray-400 hover:text-gray-500">
               <span class="sr-only">Twitter</span>
