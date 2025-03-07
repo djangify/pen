@@ -6,9 +6,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('prompt.urls')),
-    path("blog/", include("blog.urls", namespace="blog")),
     path('', include('core.urls')), 
+    path('prompt/', include('prompt.urls')), 
+    path("blog/", include("blog.urls", namespace="blog")),
 ]
 
 if settings.DEBUG:

@@ -2,6 +2,7 @@
 from django.shortcuts import render
 from django.utils import timezone
 from blog.models import Post
+import logging
 
 def home_view(request):
     # Get the latest 3 published blog posts
@@ -66,3 +67,8 @@ def advertising_policy(request):
         'meta_description': 'This is the most up to date advertising policy for our website',
     }
     return render(request, 'policy/advertising_policy.html', context)
+
+
+logger = logging.getLogger('django')
+logger.error('Test error message')
+
