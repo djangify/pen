@@ -40,7 +40,7 @@
             <div class="text-sm">
                 <h2 id="cookie-title" class="sr-only">Cookie Consent</h2>
                 We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. 
-                <a href="#" class="underline hover:text-blue-300">Privacy Policy</a>
+                <a href="{% url 'core:privacy_policy' %}" class="text-accent hover:text-text underline transition-colors">Privacy Policy</a>
             </div>
             <div class="flex gap-4">
                 <button id="accept-cookies" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm transition-colors" aria-label="Accept cookies">Accept</button>
