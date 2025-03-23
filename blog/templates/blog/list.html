@@ -6,36 +6,78 @@
     <h1 class="text-4xl font-bold mb-8">Blog</h1>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {% for post in posts %}
-        <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <article class="bg-white rounded-lg shadow-lg overflow-hidden h-full flex flex-col" style="min-height: 450px;">
             <a href="{{ post.get_absolute_url }}" class="block">
                 <div class="w-full h-48 overflow-hidden">
-                    <div class="w-full h-48 overflow-hidden">
-                        {% if post.external_image_url %}
-                            <img src="{{ post.external_image_url }}" 
-                                alt="{{ post.title }}" 
-                                class="w-full h-full object-cover">
-                        {% elif post.get_image_url %}
-                            <img src="{{ post.get_image_url }}" 
-                                alt="{{ post.title }}" 
-                                class="w-full h-full object-cover">
-                        {% elif post.youtube_url %}
-                            <img src="https://img.youtube.com/vi/{{ post.get_youtube_video_id }}/maxresdefault.jpg" 
-                                 alt="{{ post.title }}"
-                                 class="w-full h-full object-cover"
-                                 onerror="this.onerror=null; this.src='https://img.youtube.com/vi/{{ post.get_youtube_video_id }}/hqdefault.jpg';">
-                        {% endif %}
-                    </div>
-                </div>
-                <div class="p-6">
-                    <h2 class="text-xl font-bold text-gray-900 mb-2">{{ post.title }}</h2>
-                    <p class="text-gray-700 mb-4">
-                        {{ post.content|striptags|truncatewords:30 }}
-                    </p>
-                    <span class="text-blue-600 hover:text-blue-800">Read More →</span>
+                    {% if post.external_image_url %}
+                        <img src="{{ post.external_image_url }}" 
+                            alt="{{ post.title }}" 
+                            class="w-full h-full object-cover">
+                    {% elif post.get_image_url %}
+                        <img src="{{ post.get_image_url }}" 
+                            alt="{{ post.title }}" 
+                            class="w-full h-full object-cover">
+                    {% elif post.youtube_url %}
+                        <img src="https://img.youtube.com/vi/{{ post.get_youtube_video_id }}/maxresdefault.jpg" 
+                             alt="{{ post.title }}"
+                             class="w-full h-full object-cover"
+                             onerror="this.onerror=null; this.src='https://img.youtube.com/vi/{{ post.get_youtube_video_id }}/hqdefault.jpg';">
+                    {% endif %}
                 </div>
             </a>
+            <div class="p-6 flex-grow flex flex-col">
+                <h2 class="text-xl font-bold text-gray-900 mb-2">{{ post.title }}</h2>
+                <p class="text-gray-700">
+                    {{ post.content|striptags|truncatewords:30 }}
+                </p>
+                <div class="mt-auto pt-4">
+                    <hr class="mb-4 border-gray-200">
+                    <a href="{{ post.get_absolute_url }}" class="text-blue-600 hover:text-blue-800 font-medium">
+                        Read More →
+                    </a>
+                </div>
+            </div>
         </article>
         {% endfor %}
     </div>
+    
+    <!-- Pagination -->
+    {% if posts.has_other_pages %}
+        <div class="flex justify-center mt-12">
+            <div class="inline-flex rounded-md shadow-sm">
+                {% if posts.has_previous %}
+                    <a href="?page={{ posts.previous_page_number }}" class="px-4 py-2 rounded-l-md border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition-colors">
+                        Previous
+                    </a>
+                {% else %}
+                    <span class="px-4 py-2 rounded-l-md border border-gray-300 text-gray-400 cursor-not-allowed">
+                        Previous
+                    </span>
+                {% endif %}
+                
+                {% for i in posts.paginator.page_range %}
+                    {% if posts.number == i %}
+                        <span class="px-4 py-2 border-t border-b border-blue-600 bg-blue-600 text-white">
+                            {{ i }}
+                        </span>
+                    {% else %}
+                        <a href="?page={{ i }}" class="px-4 py-2 border-t border-b border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition-colors">
+                            {{ i }}
+                        </a>
+                    {% endif %}
+                {% endfor %}
+                
+                {% if posts.has_next %}
+                    <a href="?page={{ posts.next_page_number }}" class="px-4 py-2 rounded-r-md border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition-colors">
+                        Next
+                    </a>
+                {% else %}
+                    <span class="px-4 py-2 rounded-r-md border border-gray-300 text-gray-400 cursor-not-allowed">
+                        Next
+                    </span>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
 </div>
 {% endblock %}
