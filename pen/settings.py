@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_prose_editor',
     'prompt',
+    'accounts',
     'blog',
     'core',
 ]
