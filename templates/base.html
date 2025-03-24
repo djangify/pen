@@ -23,7 +23,7 @@
     <title>Pen And I Publishing - Memoir & Journal Writing Prompts</title>
     <link href="{% static 'css/main.css' %}" rel="stylesheet">
     <link href="{% static 'css/output.css' %}" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
 </head>
 <body class="text-lg 2xl:max-w-screen-2xl 2xl:mx-auto 2xl:bg-primary bg-gray-50">
     {% include 'core/partials/_messages.html' %}
@@ -87,9 +87,10 @@
     
 
     {% block extra_js %}
-        <script src="{% static 'js/main.js' %}"></script>
-        <script src="{% static 'js/category-filter.js' %}"></script>
-        <script src="{% static 'js/prompt-generator.js' %}"></script>
-    {% endblock %}
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/category-filter.js' %}"></script>
+    <script src="{% static 'js/prompt-generator.js' %}"></script>
+    <script src="{% static 'js/favourite-prompt.js' %}"></script>
+{% endblock %}
 </body>
 </html>
