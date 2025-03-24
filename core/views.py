@@ -69,6 +69,3 @@ def advertising_policy(request):
     return render(request, 'policy/advertising_policy.html', context)
 
 
-logger = logging.getLogger('django')
-logger.error('Test error message')
-

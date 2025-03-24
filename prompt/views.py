@@ -139,8 +139,10 @@ def random_prompt(request):
                 return Response(response_data, status=200)
     
     # Select a random prompt
-    prompt = random.choice(list(available_prompts))
-    
+    prompt = random.choice(prompts)
+    serializer = WritingPromptSerializer(prompt)
+    data = serializer.data
+
     # Add to shown prompts
     if prompt.id not in shown_prompts:
         shown_prompts.append(prompt.id)
@@ -160,4 +162,8 @@ def random_prompt(request):
     # Add a flag indicating this is a valid prompt response
     response_data['is_valid_prompt'] = True
     
-    return Response(response_data)
+    # Add is_favourite field if user is authenticated
+    if request.user.is_authenticated:
+        data['is_favourite'] = prompt in request.user.profile.favourite_prompts.all()
+    
+    return Response(data)

@@ -21,5 +21,11 @@ def create_user_profile(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
-    
+    # Check if profile exists before trying to save it
+    # This fixes the "User has no profile" error for existing users
+    try:
+        instance.profile.save()
+    except User.profile.RelatedObjectDoesNotExist:
+        # Create a profile for existing users who don't have one
+        UserProfile.objects.create(user=instance)
+        
