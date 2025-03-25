@@ -20,6 +20,8 @@ environ.Env.read_env(os.path.join(BASE_DIR, ENV_FILE))
 
 SITE_ID = 1
 
+SITE_URL = 'https://www.penandipublishing.co.uk'
+
 SECRET_KEY = env("SECRET_KEY", default="your-secret-key-here")
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
@@ -155,3 +157,26 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 20,
 }
 
+# Authentication backends to include email login
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.authentication.EmailAuthBackend',
+]
+
+
+# Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'localhost'  # Using local mail server
+EMAIL_PORT = 25  # Standard SMTP port
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = False
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
+CONTACT_EMAIL = env('CONTACT_EMAIL')
+
+# For development only
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Password reset settings
+PASSWORD_RESET_TIMEOUT = 86400  # 24 hours in seconds
