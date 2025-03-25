@@ -36,6 +36,7 @@ def register_view(request):
     
     return render(request, 'accounts/register.html', {'form': form})
 
+
 def send_verification_email(request, user):
     """Send email verification link to newly registered user"""
     try:
@@ -49,14 +50,19 @@ def send_verification_email(request, user):
             reverse('accounts:verify_email', args=[str(token.token)])
         )
         
-        subject = 'Verify your email for Pen and I Publishing'
-        html_message = render_to_string('accounts/email_verification_email.html', {
+        # Context for email template
+        context = {
             'user': user,
             'verification_url': verification_url,
             'site_url': settings.SITE_URL,
-        })
+            'email': user.email,
+        }
+        
+        subject = 'Verify your email for Pen and I Publishing'
+        html_message = render_to_string('accounts/email/email_verification_email.html', context)
         plain_message = strip_tags(html_message)
         
+        # Send the email
         send_mail(
             subject,
             plain_message,
@@ -68,10 +74,15 @@ def send_verification_email(request, user):
         return True
     except Exception as e:
         print(f"Error sending verification email: {e}")
+        # Add more detailed logging here
+        import traceback
+        traceback.print_exc()  # This will print the full traceback
         return False
+
 
 def verification_sent(request):
     return render(request, "accounts/verification_sent.html")
+
 
 def verify_email(request, token):
     try:
@@ -85,13 +96,13 @@ def verify_email(request, token):
             # Option to automatically log in the user after verification
             # login(request, user)
             
-            return render(request, "accounts/email_verified.html")
+            return render(request, "accounts/email/email_verified.html")
         else:
             # Token expired
-            return render(request, "accounts/email_verification_invalid.html")
+            return render(request, "accounts/email/email_verification_invalid.html")
     except EmailVerificationToken.DoesNotExist:
         # Invalid token
-        return render(request, "accounts/email_verification_invalid.html")
+        return render(request, "accounts/email/email_verification_invalid.html")
 
 def login_view(request):
     if request.method == 'POST':

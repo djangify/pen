@@ -1,0 +1,51 @@
+def send_verification_email(request, user):
+    """Send email verification link to newly registered user"""
+    import os
+    print(f"Trying to send verification email to {user.email}")
+    
+    try:
+        # Delete any existing tokens for this user
+        EmailVerificationToken.objects.filter(user=user).delete()
+        
+        # Create new token
+        token = EmailVerificationToken.objects.create(user=user)
+        
+        verification_url = request.build_absolute_uri(
+            reverse('accounts:verify_email', args=[str(token.token)])
+        )
+        
+        # Debug: check template path
+        template_path = "accounts/email/email_verification_email.html"
+        print(f"Looking for email template at: {template_path}")
+        
+        # Debug: check if file exists at expected location
+        expected_path = os.path.join('accounts', 'templates', 'accounts', 'email', 'email_verification_email.html')
+        print(f"Does expected file exist? {os.path.exists(expected_path)}")
+        
+        subject = 'Verify your email for Pen and I Publishing'
+        html_message = render_to_string(template_path, {
+            'user': user,
+            'verification_url': verification_url,
+            'site_url': settings.SITE_URL,
+            'email': user.email,  # Make sure to pass the email for the template
+        })
+        plain_message = strip_tags(html_message)
+        
+        # Debug - check email settings
+        print(f"From email: {settings.DEFAULT_FROM_EMAIL}")
+        print(f"Sending to: {user.email}")
+        
+        send_mail(
+            subject,
+            plain_message,
+            settings.DEFAULT_FROM_EMAIL,
+            [user.email],
+            html_message=html_message,
+            fail_silently=False,
+        )
+        return True
+    except Exception as e:
+        import traceback
+        print(f"Error sending verification email: {e}")
+        print(traceback.format_exc())  # This will print the full traceback
+        return False
