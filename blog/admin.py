@@ -28,6 +28,10 @@ class PostAdmin(admin.ModelAdmin):
             'fields': ('image', 'external_image_url', 'youtube_url', 'thumbnail'),
             'classes': ('collapse',),
         }),
+        ('Resource', {
+            'fields': ('resource_type', 'resource_title', 'resource'),
+            'classes': ('collapse',),
+        }),
         ('Advertisement', {
             'fields': ('ad_type', 'ad_code', 'ad_image', 'ad_url'),
             'classes': ('collapse',),

@@ -30,6 +30,10 @@ class Post(models.Model):
         ("adsense", "Google AdSense"),
         ("banner", "Banner Image"),
     ]
+    RESOURCE_TYPES = [
+        ("none", "No Resource"),
+        ("pdf", "PDF Document"),
+    ]
 
     # Basic fields
     title = models.CharField(max_length=200)
@@ -44,6 +48,9 @@ class Post(models.Model):
 
     # Content
     content = ProseEditorField(verbose_name="Blog Content")
+    resource_type = models.CharField(max_length=20, choices=RESOURCE_TYPES, default="none")
+    resource_title = models.CharField(max_length=100, blank=True, help_text="Title for the downloadable resource")
+    resource = models.FileField(upload_to="blog/resources/", null=True, blank=True)
 
     # Media fields
     image = models.ImageField(
@@ -79,7 +86,7 @@ class Post(models.Model):
         """Get the URL for the advertisement image"""
         try:
             if self.ad_image:
-                return self.ad_image.url.replace("/media/ads/", "/media/")
+                return self.ad_image.url
             return None
         except Exception:
             return None
@@ -96,7 +103,7 @@ class Post(models.Model):
     ad_type = models.CharField(max_length=10, choices=AD_TYPE_CHOICES, default="none")
     ad_code = models.TextField(blank=True)
     ad_image = models.ImageField(
-        upload_to="blog/ads/", null=True, blank=True, 
+        upload_to="ads/", null=True, blank=True, 
     )
     ad_url = models.URLField(blank=True)
 
