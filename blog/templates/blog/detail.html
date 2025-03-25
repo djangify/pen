@@ -44,6 +44,25 @@
             {{ post.content|safe }}
         </div>
 
+       <!-- Resource Downloads Section -->
+       {% if post.resource_type != 'none' and post.resource %}
+       <div class="mt-12 mb-8 p-6 bg-blue-50 rounded-lg border border-blue-200">
+           <h3 class="text-xl font-bold mb-4 flex items-center">
+               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+               </svg>
+               {% if post.resource_title %}{{ post.resource_title }}{% else %}Download Resource{% endif %}
+           </h3>
+           <p class="mb-4 text-gray-600">Click the button below to download the PDF resource.</p>
+           <a href="{{ post.resource.url }}" download class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+               </svg>
+               Download PDF
+           </a>
+       </div>
+       {% endif %}
+
         <!-- Navigation -->
         <nav class="mt-16 border-t border-gray-200 pt-12">
             <div class="flex justify-between items-center">
