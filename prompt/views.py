@@ -1,6 +1,9 @@
 # prompt/views.py
-
-from django.shortcuts import render
+from django.http import JsonResponse
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.contrib.auth.models import User
 from rest_framework import viewsets, permissions
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
@@ -46,7 +49,6 @@ class WritingPromptViewSet(viewsets.ReadOnlyModelViewSet):  # Changed to ReadOnl
             queryset = queryset.filter(prompt_type__in=prompt_types)
             
         return queryset
-# prompt/views.py (partial - only the random_prompt function)
 
 @api_view(['GET'])
 @permission_classes([permissions.AllowAny])
@@ -139,10 +141,21 @@ def random_prompt(request):
                 return Response(response_data, status=200)
     
     # Select a random prompt
-    prompt = random.choice(prompts)
+    prompt = random.choice(list(available_prompts))
+    
+    # Serialize the prompt
     serializer = WritingPromptSerializer(prompt)
-    data = serializer.data
-
+    response_data = serializer.data
+    
+    # Add a flag indicating this is a valid prompt response
+    response_data['is_valid_prompt'] = True
+    
+    # Add is_favourite field if user is authenticated
+    if request.user.is_authenticated:
+        response_data['is_favourite'] = prompt in request.user.profile.favourite_prompts.all()
+    else:
+        response_data['is_favourite'] = False
+    
     # Add to shown prompts
     if prompt.id not in shown_prompts:
         shown_prompts.append(prompt.id)
@@ -155,15 +168,35 @@ def random_prompt(request):
     
     print(f"Selected prompt ID: {prompt.id}, updated shown_prompts: {shown_prompts}")
     
-    # Serialize and return the selected prompt
-    serializer = WritingPromptSerializer(prompt)
-    response_data = serializer.data
+    return Response(response_data)
+
+
+@login_required
+def add_favourite_prompt(request, prompt_id):
+    prompt = get_object_or_404(WritingPrompt, id=prompt_id)
+    user_profile = request.user.profile
     
-    # Add a flag indicating this is a valid prompt response
-    response_data['is_valid_prompt'] = True
+    # Check if the prompt is already in favorites
+    is_favourite = prompt in user_profile.favourite_prompts.all()
     
-    # Add is_favourite field if user is authenticated
-    if request.user.is_authenticated:
-        data['is_favourite'] = prompt in request.user.profile.favourite_prompts.all()
+    # Toggle the favorite status
+    if is_favourite:
+        user_profile.favourite_prompts.remove(prompt)
+        is_favourite = False
+        message = 'Prompt removed from your favourites.'
+    else:
+        user_profile.favourite_prompts.add(prompt)
+        is_favourite = True
+        message = 'Prompt added to your favourites!'
     
-    return Response(data)
+    # If the request is AJAX, return a JSON response
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        return JsonResponse({
+            'status': 'success',
+            'is_favourite': is_favourite,
+            'message': message
+        })
+    
+    # Otherwise redirect back to referring page
+    messages.success(request, message)
+    return redirect(request.META.get('HTTP_REFERER', 'core:home'))
