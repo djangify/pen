@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
-from .models import UserProfile
+from .models import MemberResource, UserProfile
 
 class UserProfileInline(admin.StackedInline):
     model = UserProfile
@@ -35,3 +35,10 @@ class UserProfileAdmin(admin.ModelAdmin):
     def get_favourite_count(self, obj):
         return obj.favourite_prompts.count()
     get_favourite_count.short_description = 'Favourite Prompts'
+
+
+@admin.register(MemberResource)
+class MemberResourceAdmin(admin.ModelAdmin):
+    list_display = ('title', 'created_at', 'is_active')
+    list_filter = ('is_active', 'created_at')
+    search_fields = ('title', 'description')
