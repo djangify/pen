@@ -43,3 +43,10 @@ class WritingPrompt(models.Model):
     def __str__(self):
         return self.text[:50] + ('...' if len(self.text) > 50 else '')
     
+    def get_difficulty_display(self):
+        difficulty_map = {
+            'easy': 'Quick (5-10 minutes)',
+            'medium': 'Medium (15-20 minutes)',
+            'deep': 'Deep (30+ minutes)'
+        }
+        return difficulty_map.get(self.difficulty, 'Medium (15-20 minutes)')
