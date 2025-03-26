@@ -56,7 +56,7 @@
 
   <!-- Favourite Prompts -->
   <div class="bg-white shadow-md rounded-lg p-6">
-    <h2 class="text-xl font-semibold mb-4">Your Favourite Prompts</h2>
+    <h2 class="text-xl font-semibold mb-4">Your Saved Prompts</h2>
 
     {% if favourite_prompts %}
     <div class="space-y-4">
@@ -67,16 +67,14 @@
         </div>
         <div class="flex justify-between items-center mt-4">
           <div>
-            <span class="text-sm font-medium text-gray-800">Category:</span>
+            <span class="text-sm font-medium text-blue-600">Category:</span>
             <span class="text-sm ml-1">{{ prompt.category.name }}</span>
           </div>
           <div>
-            <span class="text-sm font-medium text-gray-800">Time:</span>
-            <span class="text-sm ml-1">
-              {% if prompt.difficulty == 'easy' %}Quick (5-10 minutes) {% elif
-              prompt.difficulty == 'medium' %}Medium (15-20 minutes) {% else
-              %}Deep (30+ minutes) {% endif %}
-            </span>
+            <span class="text-sm font-medium text-blue-600">Time:</span>
+            <span class="text-sm ml-1"
+              >{{ prompt.get_difficulty_display }}</span
+            >
           </div>
         </div>
         <!-- Remove from favourites button -->
