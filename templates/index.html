@@ -4,6 +4,7 @@
 {% block content %}
 <div class="max-w-4xl mx-auto py-8 px-4">
     <h1 class="text-3xl font-bold mb-6 text-center">Writing Prompt Generator</h1>
+    <p class="py-4 mb-4"> Use our writing prompt generator to get a new journal or memoir writing prompt every time you visit. Choose from a variety of categories, difficulty levels, and prompt types. Whether you're looking for a quick journaling exercise or a deep dive into your memories, we've got you covered.</p>
     <div class="bg-white shadow-md rounded-lg p-6 mb-8">
         <div class="flex flex-wrap justify-center gap-4 mb-6">
             <!-- Category Filter -->
@@ -85,6 +86,12 @@
     <!-- Hidden input to store current prompt ID -->
     <input type="hidden" id="current-prompt-id" value="">
     
+    <p class="py-4">Don't have an account yet?
+        <a href="{% url 'accounts:register' %}" class="border-transparent text-blue-600 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-md font-bold">
+            Register for an account HERE
+        </a>
+     - it's free. You can save the prompts you love and get access to free resources.
+    </p>
     <!-- Amazon section to notebooks section -->
         <div class="mt-16 text-center rounded-lg p-8 bg-blue-50">
             <h2 class="text-2xl font-bold bg-blue-50 text-gray-800 mb-4">Need a place to write down your thoughts?</h2>
