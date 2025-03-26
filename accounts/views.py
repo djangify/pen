@@ -14,7 +14,7 @@ from django.urls import reverse
 
 from prompt.models import WritingPrompt
 from .forms import UserRegistrationForm, UserProfileForm
-from .models import EmailVerificationToken
+from .models import EmailVerificationToken, MemberResource
 
 def register_view(request):
     if request.method == 'POST':
@@ -144,9 +144,12 @@ def profile_view(request):
     
     favourite_prompts = request.user.profile.favourite_prompts.all()
     
+    member_resources = MemberResource.objects.filter(is_active=True).order_by('-created_at')
+    
     return render(request, 'accounts/profile.html', {
         'form': form,
-        'favourite_prompts': favourite_prompts
+        'favourite_prompts': favourite_prompts,
+        'member_resources': member_resources
     })
 
 @login_required

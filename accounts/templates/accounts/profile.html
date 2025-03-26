@@ -1,89 +1,168 @@
 <!-- templates/accounts/profile.html -->
-{% extends "base.html" %}
-{% load static %}
-
-{% block content %}
+{% extends "base.html" %} {% load static %} {% block content %}
 <div class="max-w-4xl mx-auto py-8 px-4">
-    <h1 class="text-3xl font-bold mb-6 text-center">Your Profile</h1>
-    
-    <!-- Profile Information -->
-    <div class="bg-white shadow-md rounded-lg p-6 mb-8">
-        <h2 class="text-xl font-semibold mb-4">Account Information</h2>
-        
-        <form method="post" class="space-y-4">
-            {% csrf_token %}
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Username</label>
-                    <p class="text-gray-900 rounded-md border border-gray-300 py-2 px-3">{{ user.username }}</p>
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                    <p class="text-gray-900 rounded-md border border-gray-300 py-2 px-3">{{ user.email }}</p>
-                </div>
-            </div>
-            
-            <div>
-                <label for="{{ form.bio.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">
-                    About You
-                </label>
-                {{ form.bio }}
-                <p class="text-gray-500 text-xs mt-1">Share a bit about yourself and your writing interests</p>
-            </div>
-            
-            <div class="flex justify-end mt-6">
-                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-200">
-                    Save Changes
-                </button>
-            </div>
-        </form>
+  <h1 class="text-3xl font-bold mb-6 text-center">Your Profile</h1>
+
+  <!-- Profile Information -->
+  <div class="bg-white shadow-md rounded-lg p-6 mb-8">
+    <h2 class="text-xl font-semibold mb-4">Account Information</h2>
+
+    <form method="post" class="space-y-4">
+      {% csrf_token %}
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1"
+            >Username</label
+          >
+          <p class="text-gray-900 rounded-md border border-gray-300 py-2 px-3">
+            {{ user.username }}
+          </p>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1"
+            >Email</label
+          >
+          <p class="text-gray-900 rounded-md border border-gray-300 py-2 px-3">
+            {{ user.email }}
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <label
+          for="{{ form.bio.id_for_label }}"
+          class="block text-sm font-medium text-gray-700 mb-1"
+        >
+          About You
+        </label>
+        {{ form.bio }}
+        <p class="text-gray-500 text-xs mt-1">
+          Share a bit about yourself and your writing interests
+        </p>
+      </div>
+
+      <div class="flex justify-end mt-6">
+        <button
+          type="submit"
+          class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-200"
+        >
+          Save Changes
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Favourite Prompts -->
+  <div class="bg-white shadow-md rounded-lg p-6">
+    <h2 class="text-xl font-semibold mb-4">Your Favourite Prompts</h2>
+
+    {% if favourite_prompts %}
+    <div class="space-y-4">
+      {% for prompt in favourite_prompts %}
+      <div class="border rounded-lg p-4 relative">
+        <div class="prose prose-lg">
+          <p class="text-gray-900">{{ prompt.text }}</p>
+        </div>
+        <div class="flex justify-between items-center mt-4">
+          <div>
+            <span class="text-sm font-medium text-gray-800">Category:</span>
+            <span class="text-sm ml-1">{{ prompt.category.name }}</span>
+          </div>
+          <div>
+            <span class="text-sm font-medium text-gray-800">Time:</span>
+            <span class="text-sm ml-1">
+              {% if prompt.difficulty == 'easy' %}Quick (5-10 minutes) {% elif
+              prompt.difficulty == 'medium' %}Medium (15-20 minutes) {% else
+              %}Deep (30+ minutes) {% endif %}
+            </span>
+          </div>
+        </div>
+        <!-- Remove from favourites button -->
+        <a
+          href="{% url 'accounts:favourite_prompt' prompt.id %}"
+          class="absolute top-2 right-2 text-red-600 hover:text-red-800"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </a>
+      </div>
+      {% endfor %}
     </div>
-    
-    <!-- Favourite Prompts -->
-    <div class="bg-white shadow-md rounded-lg p-6">
-        <h2 class="text-xl font-semibold mb-4">Your Favourite Prompts</h2>
-        
-        {% if favourite_prompts %}
-            <div class="space-y-4">
-                {% for prompt in favourite_prompts %}
-                    <div class="border rounded-lg p-4 relative">
-                        <div class="prose prose-lg">
-                            <p class="text-gray-900">{{ prompt.text }}</p>
-                        </div>
-                        <div class="flex justify-between items-center mt-4">
-                            <div>
-                                <span class="text-sm font-medium text-gray-800">Category:</span>
-                                <span class="text-sm ml-1">{{ prompt.category.name }}</span>
-                            </div>
-                            <div>
-                                <span class="text-sm font-medium text-gray-800">Time:</span>
-                                <span class="text-sm ml-1">
-                                    {% if prompt.difficulty == 'easy' %}Quick (5-10 minutes)
-                                    {% elif prompt.difficulty == 'medium' %}Medium (15-20 minutes)
-                                    {% else %}Deep (30+ minutes)
-                                    {% endif %}
-                                </span>
-                            </div>
-                        </div>
-                        <!-- Remove from favourites button -->
-                        <a href="{% url 'accounts:favourite_prompt' prompt.id %}" class="absolute top-2 right-2 text-red-600 hover:text-red-800">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
-                            </svg>
-                        </a>
-                    </div>
-                {% endfor %}
-            </div>
-        {% else %}
-            <div class="text-center py-8">
-                <p class="text-gray-600 mb-4">You haven't saved any prompts yet.</p>
-                <a href="{% url 'core:home' %}" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-200">
-                    Explore Writing Prompts
-                </a>
-            </div>
-        {% endif %}
+    {% else %}
+    <div class="text-center py-8">
+      <p class="text-gray-600 mb-4">You haven't saved any prompts yet.</p>
+      <a
+        href="{% url 'core:home' %}"
+        class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-200"
+      >
+        Explore Writing Prompts
+      </a>
     </div>
+    {% endif %}
+  </div>
+  <!-- Member Resources Section -->
+  <div class="bg-white shadow-md rounded-lg p-6 mt-8">
+    <h2 class="text-xl font-semibold mb-4">Free Member Resources</h2>
+
+    {% if member_resources %}
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      {% for resource in member_resources %}
+      <div
+        class="border rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-200"
+      >
+        <a href="{{ resource.file.url }}" class="block" target="_blank">
+          <img
+            src="{{ resource.thumbnail.url }}"
+            alt="{{ resource.title }}"
+            class="w-full h-40 object-contain"
+          />
+          <div class="p-4">
+            <h3 class="font-medium text-gray-900 mb-1">{{ resource.title }}</h3>
+            <p class="text-sm text-gray-600 mb-2">
+              {{ resource.description|truncatechars:60 }}
+            </p>
+            <span class="inline-flex items-center text-blue-600 text-sm">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4 mr-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"
+                />
+              </svg>
+              Download PDF
+            </span>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center py-8">
+      <p class="text-gray-600 mb-2">No resources available yet.</p>
+      <p class="text-gray-600">
+        Check back soon for free writing guides and templates!
+      </p>
+    </div>
+    {% endif %}
+  </div>
 </div>
 {% endblock %}
