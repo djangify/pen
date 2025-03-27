@@ -1,0 +1,413 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/calendar.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="bg-white shadow-md rounded-lg p-6 mb-8">
+    <h1 class="text-3xl font-bold mb-6 text-center">Writing Progress Tracker</h1>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 justify-center mx-auto">
+        <!-- Left Column: Calendar & Stats -->
+        <div class="lg:col-span-2">
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <div class="flex justify-between items-center mb-4">
+                    
+                    <h2 class="text-xl font-semibold">{{ current_month }} Writing Calendar</h2>
+                    <div class="flex space-x-2">
+                        <button id="prev-month" class="text-gray-600 hover:text-blue-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <button id="next-month" class="text-gray-600 hover:text-blue-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div id="writing-calendar" class="calendar-container">
+                    <!-- Calendar will be rendered here by JavaScript -->
+                </div>
+                <div class="mt-4 flex justify-center">
+                    <div class="flex space-x-6 text-sm text-gray-500">
+                        <div class="flex items-center">
+                            <div class="w-3 h-3 rounded-full bg-blue-200 mr-1"></div>
+                            <span>1-20 min</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-3 h-3 rounded-full bg-blue-400 mr-1"></div>
+                            <span>21-40 min</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-3 h-3 rounded-full bg-blue-600 mr-1"></div>
+                            <span>41+ min</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                       
+            <!-- Record Session Form -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6 sticky top-6">
+                <h2 class="text-xl font-semibold mb-4">Record Writing Session</h2>
+                <form method="post" action="{% url 'prompt:writing_progress' %}">
+                    {% csrf_token %}
+                    
+                    <div class="space-y-4">
+                        <!-- Date field -->
+                        <div>
+                            <label for="{{ session_form.date.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">
+                                Date
+                            </label>
+                            {{ session_form.date }}
+                            {% if session_form.date.errors %}
+                                <p class="mt-1 text-sm text-red-600">{{ session_form.date.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Minutes spent field -->
+                        <div>
+                            <label for="{{ session_form.minutes_spent.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">
+                                Minutes Spent
+                            </label>
+                            {{ session_form.minutes_spent }}
+                            {% if session_form.minutes_spent.errors %}
+                                <p class="mt-1 text-sm text-red-600">{{ session_form.minutes_spent.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Word count field (optional) -->
+                        <div>
+                            <label for="{{ session_form.word_count.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">
+                                Word Count (Optional)
+                            </label>
+                            {{ session_form.word_count }}
+                            {% if session_form.word_count.errors %}
+                                <p class="mt-1 text-sm text-red-600">{{ session_form.word_count.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Mood field -->
+                        <div>
+                            <label for="{{ session_form.mood.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">
+                                How was your writing session?
+                            </label>
+                            {{ session_form.mood }}
+                            {% if session_form.mood.errors %}
+                                <p class="mt-1 text-sm text-red-600">{{ session_form.mood.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Prompt used field (optional) -->
+                        <div>
+                            <label for="{{ session_form.prompt_used.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">
+                                Prompt Used (Optional)
+                            </label>
+                            {{ session_form.prompt_used }}
+                            {% if session_form.prompt_used.errors %}
+                                <p class="mt-1 text-sm text-red-600">{{ session_form.prompt_used.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Notes field (optional) -->
+                        <div>
+                            <label for="{{ session_form.notes.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">
+                                Notes (Optional)
+                            </label>
+                            {{ session_form.notes }}
+                            {% if session_form.notes.errors %}
+                                <p class="mt-1 text-sm text-red-600">{{ session_form.notes.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="flex justify-end">
+                            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-200">
+                                Save Session
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+  
+        </div>
+
+        <!-- Right Column: Forms -->
+        <div>
+            
+            <!-- Monthly Stats -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h2 class="text-xl font-semibold mb-4">Monthly Stats</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-center">
+                    <div class="p-4 bg-blue-50 rounded-lg">
+                        <p class="text-sm text-gray-600">Total Sessions</p>
+                        <p class="text-2xl font-bold text-blue-800">{{ stats.total_sessions }}</p>
+                    </div>
+                    <div class="p-4 bg-blue-50 rounded-lg">
+                        <p class="text-sm text-gray-600">Minutes Written</p>
+                        <p class="text-2xl font-bold text-blue-800">{{ stats.total_minutes }}</p>
+                    </div>
+                    <div class="p-4 bg-blue-50 rounded-lg">
+                        <p class="text-sm text-gray-600">Words Written</p>
+                        <p class="text-2xl font-bold text-blue-800">{{ stats.total_words }}</p>
+                    </div>
+                    <div class="p-4 bg-blue-50 rounded-lg">
+                        <p class="text-sm text-gray-600">Avg Session</p>
+                        <p class="text-2xl font-bold text-blue-800">{{ stats.avg_minutes }}</p>
+                        <p class="text-sm text-gray-600">minutes</p>
+                    </div>
+                    <div class="p-4 bg-blue-50 rounded-lg">
+                        <p class="text-sm text-gray-600">Avg Words</p>
+                        <p class="text-2xl font-bold text-blue-800">{{ stats.avg_words }}</p>
+                        <p class="text-sm text-gray-600">per session</p>
+                    </div>
+                    <div class="p-4 bg-green-50 rounded-lg">
+                        <p class="text-sm text-gray-600">View More</p><br>
+                        <a href="{% url 'prompt:stats' %}" class="text-green-600 hover:text-green-800 font-medium text-sm flex justify-center items-center h-8">
+                            <span>Detailed Stats</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+  
+                      
+            <!-- Recent sessions -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-semibold">Recent Writing Sessions</h2>
+                    <a href="{% url 'prompt:session_list' %}" class="text-blue-600 hover:text-blue-800 flex items-center text-sm">
+                        View all sessions
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+                
+                {% if recent_sessions %}
+                    <div class="space-y-4">
+                        {% for session in recent_sessions %}
+                            <div class="border rounded-lg p-4 relative">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="font-medium text-gray-800">
+                                            {{ session.date|date:"D, j M Y" }} - {{ session.minutes_spent }} minutes
+                                        </h3>
+                                        {% if session.word_count %}
+                                            <p class="text-sm text-gray-600">{{ session.word_count }} words</p>
+                                        {% endif %}
+                                        {% if session.notes %}
+                                            <p class="text-sm text-gray-600 mt-1">{{ session.notes }}</p>
+                                        {% endif %}
+                                    </div>
+                                    <div class="flex space-x-2">
+                                        <a href="{% url 'prompt:edit_session' session.id %}" class="text-blue-600 hover:text-blue-800">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                                            </svg>
+                                        </a>
+                                        <a href="{% url 'prompt:delete_session' session.id %}" class="text-red-600 hover:text-red-800">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                                
+                                <!-- Mood indicator -->
+                                <div class="mt-2 flex items-center">
+                                    <span class="text-xs text-gray-500 mr-2">Session mood:</span>
+                                    <div class="flex">
+                                        {% if session.mood == 'very_negative' %}
+                                            <span class="text-xs px-2 py-1 bg-red-100 text-red-800 rounded-full">Very Difficult</span>
+                                        {% elif session.mood == 'negative' %}
+                                            <span class="text-xs px-2 py-1 bg-red-50 text-red-700 rounded-full">Difficult</span>
+                                        {% elif session.mood == 'neutral' %}
+                                            <span class="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded-full">Neutral</span>
+                                        {% elif session.mood == 'positive' %}
+                                            <span class="text-xs px-2 py-1 bg-green-50 text-green-700 rounded-full">Enjoyable</span>
+                                        {% elif session.mood == 'very_positive' %}
+                                            <span class="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full">Very Enjoyable</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                
+                                <!-- Prompt used (if any) -->
+                                {% if session.prompt_used %}
+                                    <div class="mt-2 text-xs text-gray-500">
+                                        <span>Prompt used:</span>
+                                        <span class="italic">"{{ session.prompt_used.text|truncatechars:60 }}"</span>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="text-center py-8 bg-gray-50 rounded-lg">
+                        <p class="text-gray-600 mb-4">You haven't recorded any writing sessions yet.</p>
+                        <p class="text-sm text-gray-500">Record your writing sessions to track your progress and build a writing habit.</p>
+                    </div>
+                {% endif %}
+            </div>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+{% block extra_js %}
+{{ block.super }}
+<script id="calendar-data" type="application/json">
+    {{ calendar_data|json_script:"calendar-data" }}
+    const calendarData = JSON.parse(document.getElementById('calendar-data').textContent);
+<script>
+    // Calendar data from backend
+    const calendarData = {{ calendar_data|safe }};
+    
+    // DOM elements
+    const calendarContainer = document.getElementById('writing-calendar');
+    const prevMonthBtn = document.getElementById('prev-month');
+    const nextMonthBtn = document.getElementById('next-month');
+    const addGoalBtn = document.getElementById('add-goal-btn');
+    const goalModal = document.getElementById('goal-modal');
+    const closeGoalModalBtn = document.getElementById('close-goal-modal');
+    const cancelGoalBtn = document.getElementById('cancel-goal-btn');
+    
+    // Current date for calendar
+    let currentDate = new Date();
+    
+    // Render calendar for current month
+    function renderCalendar(year, month) {
+        // Clear calendar container
+        calendarContainer.innerHTML = '';
+        
+        // Create date object for first day of month
+        const firstDayOfMonth = new Date(year, month, 1);
+        const lastDayOfMonth = new Date(year, month + 1, 0);
+        
+        // Get day of week for first day (0 = Sunday, 6 = Saturday)
+        const firstDayWeekday = firstDayOfMonth.getDay();
+        
+        // Create header with weekday names
+        const header = document.createElement('div');
+        header.className = 'calendar-header';
+        
+        const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        weekdays.forEach(day => {
+            const dayElem = document.createElement('div');
+            dayElem.className = 'calendar-cell calendar-header-cell';
+            dayElem.textContent = day;
+            header.appendChild(dayElem);
+        });
+        
+        calendarContainer.appendChild(header);
+        
+        // Create calendar grid
+        const grid = document.createElement('div');
+        grid.className = 'calendar-grid';
+        
+        // Add empty cells for days before first day of month
+        for (let i = 0; i < firstDayWeekday; i++) {
+            const emptyCell = document.createElement('div');
+            emptyCell.className = 'calendar-cell calendar-day empty';
+            grid.appendChild(emptyCell);
+        }
+        
+        // Add cells for each day of the month
+        for (let day = 1; day <= lastDayOfMonth.getDate(); day++) {
+            const dayCell = document.createElement('div');
+            dayCell.className = 'calendar-cell calendar-day';
+            
+            // Create date string in YYYY-MM-DD format
+            const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+            
+            // Check if there's writing data for this day
+            if (calendarData && calendarData[dateStr]) {
+                const sessionData = calendarData[dateStr];
+                
+                // Determine color based on minutes spent
+                let colorClass = 'bg-blue-200';
+                if (sessionData.minutes > 40) {
+                    colorClass = 'bg-blue-600 text-white';
+                } else if (sessionData.minutes > 20) {
+                    colorClass = 'bg-blue-400 text-white';
+                }
+                
+                dayCell.classList.add(colorClass);
+                
+                // Add tooltip with session details
+                dayCell.setAttribute('title', `${sessionData.minutes} minutes | ${sessionData.words} words | ${sessionData.count} session(s)`);
+                
+                // Add session count indicator
+                if (sessionData.count > 1) {
+                    const countBadge = document.createElement('span');
+                    countBadge.className = 'session-count';
+                    countBadge.textContent = sessionData.count;
+                    dayCell.appendChild(countBadge);
+                }
+            }
+            
+            // Add day number
+            const dayNumber = document.createElement('span');
+            dayNumber.textContent = day;
+            dayCell.appendChild(dayNumber);
+            
+            // Highlight today
+            const today = new Date();
+            if (day === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+                dayCell.classList.add('today');
+            }
+            
+            grid.appendChild(dayCell);
+        }
+        
+        calendarContainer.appendChild(grid);
+    }
+    
+    // Initial calendar render
+    renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
+    
+    // Previous month button
+    prevMonthBtn.addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
+    });
+    
+    // Next month button
+    nextMonthBtn.addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
+    });
+    
+    // Goal modal functions
+    function openGoalModal() {
+        goalModal.classList.remove('hidden');
+    }
+    
+    function closeGoalModal() {
+        goalModal.classList.add('hidden');
+    }
+    
+    // Goal modal event listeners
+    addGoalBtn.addEventListener('click', openGoalModal);
+    closeGoalModalBtn.addEventListener('click', closeGoalModal);
+    cancelGoalBtn.addEventListener('click', closeGoalModal);
+    
+    // Close modal when clicking outside
+    goalModal.addEventListener('click', (e) => {
+        if (e.target === goalModal) {
+            closeGoalModal();
+        }
+    });
+</script>
+{% endblock %}

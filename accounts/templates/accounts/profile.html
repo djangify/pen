@@ -1,5 +1,7 @@
-{% extends "base.html" %} {% block content %}
-<div class="max-w-4xl mx-auto py-8 px-4">
+{% extends "base.html" %} 
+
+{% block content %}
+<div class="bg-white shadow-md rounded-lg p-6 mb-8">
   <h1 class="text-3xl font-bold mb-6 text-center">Your Profile</h1>
 
   <!-- Secondary navigation -->
@@ -15,17 +17,17 @@
       </li>
       <li>
         <a href="#writing" class="text-blue-600 hover:text-blue-800"
-          >Writing Progress</a
+          >Tracker</a
         >
       </li>
       <li>
         <a href="#saved-prompts" class="text-blue-600 hover:text-blue-800"
-          >Saved Prompts</a
+          >Prompts</a
         >
       </li>
       <li>
         <a href="#resources" class="text-blue-600 hover:text-blue-800"
-          >Free Resources</a
+          >Resources</a
         >
       </li>
     </ul>
@@ -35,16 +37,18 @@
   <div id="account">
     {% include "prompt/components/profile_account_info.html" %}
   </div>
-
-  {% comment %}
-  <div id="stats" class="mt-8">
-    {% include "prompt/components/profile_stats.html" %}
-  </div>
-  {% endcomment %} {% comment %}
+  
   <div id="writing" class="mt-8">
     {% include "prompt/components/profile_writing_tracker.html" %}
   </div>
-  {% endcomment %}
+
+  <div id="resources" class="mt-8">
+    {% include "prompt/components/writing_tips.html" %}
+  </div>
+
+  <div id="stats" class="mt-8">
+    {% include "prompt/stats.html" %}
+  </div>
 
   <div id="saved-prompts" class="mt-8">
     {% include "prompt/components/profile_saved_prompts.html" %}
@@ -53,5 +57,7 @@
   <div id="resources" class="mt-8">
     {% include "prompt/components/profile_resources.html" %}
   </div>
+
+
 </div>
 {% endblock %}

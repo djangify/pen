@@ -1,5 +1,4 @@
 # prompt/models.py
-
 from django.db import models
 
 class Tag(models.Model):
@@ -50,3 +49,6 @@ class WritingPrompt(models.Model):
             'deep': 'Deep (30+ minutes)'
         }
         return difficulty_map.get(self.difficulty, 'Medium (15-20 minutes)')
+
+# Import tracker models
+from .models_tracker import WritingGoal, WritingSession
