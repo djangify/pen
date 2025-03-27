@@ -13,13 +13,14 @@
         >
       </li>
       <li>
-        <a href="#stats" class="text-blue-600 hover:text-blue-800">Stats</a>
-      </li>
-      <li>
         <a href="#writing" class="text-blue-600 hover:text-blue-800"
-          >Tracker</a
+          >Summary</a
         >
       </li>
+      <li>
+        <a href="#stats" class="text-blue-600 hover:text-blue-800">Stats</a>
+      </li>
+
       <li>
         <a href="#saved-prompts" class="text-blue-600 hover:text-blue-800"
           >Prompts</a
@@ -28,6 +29,11 @@
       <li>
         <a href="#resources" class="text-blue-600 hover:text-blue-800"
           >Resources</a
+        >
+      </li>
+      <li>
+        <a href="{% url 'prompt:writing_progress' %}" class="text-blue-600 hover:text-blue-800"
+          >Tracker</a
         >
       </li>
     </ul>
@@ -42,13 +48,14 @@
     {% include "prompt/components/profile_writing_tracker.html" %}
   </div>
 
+
   <div id="resources" class="mt-8">
     {% include "prompt/components/writing_tips.html" %}
   </div>
 
-  <div id="stats" class="mt-8">
-    {% include "prompt/stats.html" %}
-  </div>
+  {% comment %} <div id="stats" class="mt-8">
+    {% include "prompt/components/stats.html" %}
+  </div> {% endcomment %}
 
   <div id="saved-prompts" class="mt-8">
     {% include "prompt/components/profile_saved_prompts.html" %}
@@ -58,6 +65,7 @@
     {% include "prompt/components/profile_resources.html" %}
   </div>
 
-
 </div>
+
+
 {% endblock %}
