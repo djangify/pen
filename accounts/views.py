@@ -15,6 +15,7 @@ from django.urls import reverse
 from prompt.models import WritingPrompt
 from .forms import UserRegistrationForm, UserProfileForm
 from .models import EmailVerificationToken, MemberResource
+from prompt.models_tracker import WritingGoal, WritingSession
 
 def register_view(request):
     if request.method == 'POST':
@@ -142,15 +143,31 @@ def profile_view(request):
     else:
         form = UserProfileForm(instance=request.user.profile)
     
+    # Get favourite prompts
     favourite_prompts = request.user.profile.favourite_prompts.all()
     
+    # Get member resources
     member_resources = MemberResource.objects.filter(is_active=True).order_by('-created_at')
+    
+    # Get active writing goals for the user
+    active_goals = WritingGoal.objects.filter(
+        user=request.user,
+        active=True
+    )
+    
+    # Get recent writing sessions for the user
+    recent_sessions = WritingSession.objects.filter(
+        user=request.user
+    ).order_by('-date')[:3]
     
     return render(request, 'accounts/profile.html', {
         'form': form,
         'favourite_prompts': favourite_prompts,
-        'member_resources': member_resources
+        'member_resources': member_resources,
+        'active_goals': active_goals,
+        'recent_sessions': recent_sessions
     })
+
 
 @login_required
 def add_favourite_prompt(request, prompt_id):

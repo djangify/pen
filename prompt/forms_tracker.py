@@ -18,7 +18,11 @@ class WritingGoalForm(forms.ModelForm):
         widgets = {
             'start_date': DateInput(),
             'end_date': DateInput(),
-            'notes': forms.Textarea(attrs={'rows': 3, 'placeholder': 'Why did you set this goal? What are you working towards?'}),
+            'notes': forms.Textarea(attrs={
+                'rows': 3, 
+                'placeholder': 'Why did you set this goal? What are you working towards?', 
+                'class': 'resize-y min-h-[80px]'
+            }),
             'target_value': forms.NumberInput(attrs={'min': 1}),
         }
     
@@ -26,7 +30,8 @@ class WritingGoalForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         # Add classes for styling
         for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = 'form-control rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50'
+            existing_class = field.widget.attrs.get('class', '')
+            field.widget.attrs['class'] = f'form-control rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 {existing_class}'.strip()
             
         # Set today as min date for start_date
         self.fields['start_date'].widget.attrs['min'] = timezone.now().date().isoformat()
@@ -61,7 +66,11 @@ class WritingSessionForm(forms.ModelForm):
         ]
         widgets = {
             'date': DateInput(),
-            'notes': forms.Textarea(attrs={'rows': 3, 'placeholder': 'What did you write about? How did it go?'}),
+            'notes': forms.Textarea(attrs={
+                'rows': 3, 
+                'placeholder': 'What did you write about? How did it go?', 
+                'class': 'resize-y min-h-[80px]'
+            }),
             'minutes_spent': forms.NumberInput(attrs={'min': 1}),
             'word_count': forms.NumberInput(attrs={'min': 0}),
         }

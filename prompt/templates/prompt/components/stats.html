@@ -1,42 +1,19 @@
 {% load custom_filters %}
 {% load static %}
 
-{% block extra_css %}
-<style>
-    .chart-container {
-        height: 300px;
-        width: 100%;
-    }
-    
-    .tab-button {
-        @apply px-4 py-2 text-sm font-medium rounded-md;
-    }
-    
-    .tab-button.active {
-        @apply bg-blue-600 text-white;
-    }
-    
-    .tab-button:not(.active) {
-        @apply bg-gray-100 text-gray-700 hover:bg-gray-200;
-    }
-    
-    .tab-panel {
-        display: none;
-    }
-    
-    .tab-panel.active {
-        display: block;
-    }
-</style>
-{% endblock %}
-
 {% block content %}{% endblock %} 
-<div class="max-w-4xl mx-auto py-8 px-4">
-    <div class="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <h1 class="text-3xl font-bold">Writing Statistics</h1>
- 
-    </div>
 
+    <div class="bg-white shadow-md rounded-lg overflow-hidden">
+        <!-- Accordion Header -->
+        <button class="accordion-header w-full flex justify-between items-center p-6 hover:bg-gray-50 focus:outline-none" data-target="stats-content">
+          <h2 class="text-xl font-semibold">Writing Statistics</h2>
+          <svg class="accordion-icon h-6 w-6 transform text-gray-500 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        
+        <!-- Accordion Content -->
+        <div id="stats-content" class="accordion-content hidden border-t border-gray-200 p-6">
     <!-- Time period selector -->
     <div class="bg-white rounded-lg shadow-md p-6 mb-6">
         <h2 class="text-xl font-semibold mb-4">Time Period: {{ title }}</h2>
@@ -247,6 +224,8 @@
             </div>
         {% endif %}
     </div>
+</div>
+</div>
 </div>
 
 {% block extra_js %}
