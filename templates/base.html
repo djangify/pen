@@ -37,15 +37,15 @@
     <link href="{% static 'css/main.css' %}" rel="stylesheet" />
     <link href="{% static 'css/output.css' %}" rel="stylesheet" />
   </head>
-  <body
-    class="text-lg 2xl:max-w-screen-2xl 2xl:mx-auto 2xl:bg-primary bg-gray-50"
-  >
+  <body>
     {% include 'core/partials/_messages.html' %} 
 
     {% include 'components/nav.html' %}
     
-    <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-      {% block content %}{% endblock %}
+    <main class="bg-white dark:bg-gray-900">
+      
+        {% block content %}{% endblock %}
+      
     </main>
     <!-- Footer -->
     <footer role="contentinfo">{% include 'components/footer.html' %}</footer>
