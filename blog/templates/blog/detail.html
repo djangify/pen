@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
+{% load static %}
+
+
 {% block content %}
 
 <!-- templates/blog/detail.html -->
-
 <div class="max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6">
     <div class="bg-white p-8 rounded-lg shadow-sm">
         {% include 'components/breadcrumb.html' %}
@@ -15,7 +17,10 @@
                 </a>
             </div>
         </div>
-        
+        <div class="mb-6">
+            <p class="text-sm text-gray-600 mb-2">Thank you, for sharing:</p>
+            {% include 'components/social_share.html' %}
+        </div>
         {% if post.external_image_url %}
             <div class="mb-8">
                 <img src="{{ post.external_image_url }}" alt="{{ post.title }}" class="w-half h-auto rounded-lg shadow-sm">
@@ -101,6 +106,10 @@
                 <span class="bg-purple-700 hover:text-white-800 text-white text-md px-4 py-1.5 rounded-full mr-2">All articles in category:</span>
                 {{ post.category.name }}
             </a>
+        </div>
+        <div class="mb-6">
+            <p class="text-sm text-gray-600 mb-2">Thank you, for sharing:</p>
+            {% include 'components/social_share.html' %}
         </div>
        <!-- related posts -->
         <div class="mt-12 mb-24">
