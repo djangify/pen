@@ -355,4 +355,4 @@ def stats_view(request):
         'time_series': json.dumps(time_series),
     }
     
-    return render(request, 'prompt/stats.html', context)
+    return render(request, 'prompt/components/stats.html', context)
