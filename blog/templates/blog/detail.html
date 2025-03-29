@@ -6,7 +6,7 @@
 <div class="max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6">
     <div class="bg-white p-8 rounded-lg shadow-sm">
         {% include 'components/breadcrumb.html' %}
-        <header class="mb-8">
+        <div class="mb-8">
             <h1 class="text-4xl font-bold">{{ post.title }}</h1>
             <div class="mt-2 text-gray-600">
                 {{ post.publish_date|date:"F j, Y" }} | 
@@ -14,11 +14,11 @@
                     {{ post.category.name }}
                 </a>
             </div>
-        </header>
+        </div>
         
         {% if post.external_image_url %}
             <div class="mb-8">
-                <img src="{{ post.external_image_url }}" alt="{{ post.title }}" class="w-full h-auto rounded-lg shadow-sm">
+                <img src="{{ post.external_image_url }}" alt="{{ post.title }}" class="w-half h-auto rounded-lg shadow-sm">
             </div>
         {% elif post.image %}
             <div class="mb-8">
