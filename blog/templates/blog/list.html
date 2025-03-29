@@ -2,7 +2,7 @@
 {% block content %}
 
 <!-- templates/blog/list.html -->
-<div class="container mx-auto px-4 py-8">
+<div class="max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6">
     <h1 class="text-4xl font-bold mb-8">Blog</h1>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {% for post in posts %}
@@ -46,7 +46,7 @@
         <div class="flex justify-center mt-12">
             <div class="inline-flex rounded-md shadow-sm">
                 {% if posts.has_previous %}
-                    <a href="?page={{ posts.previous_page_number }}" class="px-4 py-2 rounded-l-md border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition-colors">
+                    <a href="?page={{ posts.previous_page_number }}" class="px-4 py-2 rounded-l-md border border-blue-600 text-blue-600 hover:bg-purple-700 hover:text-white transition-colors">
                         Previous
                     </a>
                 {% else %}
@@ -57,18 +57,18 @@
                 
                 {% for i in posts.paginator.page_range %}
                     {% if posts.number == i %}
-                        <span class="px-4 py-2 border-t border-b border-blue-600 bg-blue-600 text-white">
+                        <span class="px-4 py-2 border-t border-b border-blue-600 bg-purple-700 text-white">
                             {{ i }}
                         </span>
                     {% else %}
-                        <a href="?page={{ i }}" class="px-4 py-2 border-t border-b border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition-colors">
+                        <a href="?page={{ i }}" class="px-4 py-2 border-t border-b border-blue-600 text-blue-600 hover:bg-purple-700 hover:text-white transition-colors">
                             {{ i }}
                         </a>
                     {% endif %}
                 {% endfor %}
                 
                 {% if posts.has_next %}
-                    <a href="?page={{ posts.next_page_number }}" class="px-4 py-2 rounded-r-md border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition-colors">
+                    <a href="?page={{ posts.next_page_number }}" class="px-4 py-2 rounded-r-md border border-blue-600 text-blue-600 hover:bg-purple-700 hover:text-white transition-colors">
                         Next
                     </a>
                 {% else %}

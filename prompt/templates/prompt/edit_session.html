@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<div class="max-w-2xl mx-auto py-8 px-4">
+<div class="max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6">
     <div class="mb-6 flex justify-between items-center">
         <h1 class="text-2xl font-bold">Edit Writing Session</h1>
         {% if request.GET.from == 'list' %}
@@ -108,7 +108,7 @@
                                 Cancel
                             </a>
                         {% endif %}
-                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md">
+                        <button type="submit" class="bg-purple-700 hover:bg-purple-800 text-white font-medium py-2 px-4 rounded-md">
                             Save Changes
                         </button>
                     </div>
