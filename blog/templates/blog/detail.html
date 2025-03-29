@@ -10,7 +10,7 @@
             <h1 class="text-4xl font-bold">{{ post.title }}</h1>
             <div class="mt-2 text-gray-600">
                 {{ post.publish_date|date:"F j, Y" }} | 
-                <a href="{{ post.category.get_absolute_url }}" class="text-blue-600 hover:text-blue-800">
+                <a href="{{ post.category.get_absolute_url }}" class="text-purple-600 hover:text-blue-800">
                     {{ post.category.name }}
                 </a>
             </div>
@@ -48,7 +48,7 @@
        {% if post.resource_type != 'none' and post.resource %}
        <div class="mt-12 mb-8 p-6 bg-blue-50 rounded-lg border border-blue-200">
            <h3 class="text-xl font-bold mb-4 flex items-center">
-               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                </svg>
                {% if post.resource_title %}{{ post.resource_title }}{% else %}Download Resource{% endif %}
@@ -119,7 +119,7 @@
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200">
                         {% endif %}
                     </div>
-                    <p class="text-lg text-gray-900 group-hover:text-blue-600 transition-colors duration-200">
+                    <p class="text-lg text-gray-900 group-hover:text-purple-600 transition-colors duration-200">
                         {{ related.title|truncatechars:60 }}
                     </p>
                 </a>

@@ -1,38 +1,38 @@
 {% extends "base.html" %} 
 
 {% block content %}
-<div class="bg-white shadow-md rounded-lg p-6 mb-8">
+<div class="max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6">
   <h1 class="text-3xl font-bold mb-6 text-center">Your Profile</h1>
 
   <!-- Secondary navigation -->
   <div class="profile-nav mb-6">
     <ul class="flex flex-wrap justify-center gap-4 text-sm">
       <li>
-        <a href="#account" class="text-blue-600 hover:text-blue-800"
+        <a href="#account" class="text-purple-600 hover:text-purple-700"
           >Account Info</a
         >
       </li>
       <li>
-        <a href="#writing" class="text-blue-600 hover:text-blue-800"
+        <a href="#writing" class="text-purple-600 hover:text-purple-700"
           >Summary</a
         >
       </li>
-      <li>
-        <a href="#stats" class="text-blue-600 hover:text-blue-800">Stats</a>
-      </li>
+      {% comment %} <li>
+        <a href="#stats" class="text-purple-600 hover:text-purple-700">Stats</a>
+      </li> {% endcomment %}
 
       <li>
-        <a href="#saved-prompts" class="text-blue-600 hover:text-blue-800"
+        <a href="#saved-prompts" class="text-purple-600 hover:text-purple-700"
           >Prompts</a
         >
       </li>
       <li>
-        <a href="#resources" class="text-blue-600 hover:text-blue-800"
+        <a href="#resources" class="text-purple-600 hover:text-purple-700"
           >Resources</a
         >
       </li>
       <li>
-        <a href="{% url 'prompt:writing_progress' %}" class="text-blue-600 hover:text-blue-800"
+        <a href="{% url 'prompt:writing_progress' %}" class="text-purple-600 hover:text-purple-700"
           >Tracker</a
         >
       </li>

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<div class="max-w-7xl mx-auto mt-16 mb-12 px-4">
+<div class="max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6">
     <h1 class="text-3xl font-bold mb-6 text-center">Writing Progress Tracker</h1>
 
     <!-- Mobile-first responsive grid with 2 columns on larger screens -->
@@ -22,10 +22,10 @@
         <!-- Right Column: Record Writing Session & Monthly Stats -->
         <div>
             <!-- Record Writing Session Form -->
-            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <div class="bg-white rounded-lg shadow-md p-6 mb-8">
                 {% include "prompt/components/record_writing.html" %}
             </div>
-            
+            <br>
             <!-- Monthly Stats -->
             <div class="bg-white rounded-lg shadow-md p-6">
                 {% include "prompt/components/monthly_stats.html" %}
