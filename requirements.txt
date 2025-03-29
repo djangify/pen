@@ -2,8 +2,8 @@ asgiref
 Django
 django-environ
 django-js-asset
-django-prose-editor
 djangorestframework
+django-tinymce
 gunicorn
 nh3
 packaging

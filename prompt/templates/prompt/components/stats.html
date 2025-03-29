@@ -162,14 +162,11 @@
                     <h3 class="font-medium text-blue-800">Writing Consistency</h3>
                     <p class="text-gray-700 mt-1">
                         {% if day_counts %}
-                            You write most often on 
-                            {% with most_frequent=sorted_days|last %}
-                                        {{ mood_counts.very_positive|default:0 }}                        <span class="font-medium">{{ most_frequent.0 }}s</span>
-                                ({{ most_frequent.1 }} sessions).
-                            {% endwith %}
+                                You write most often on 
                             {% with most_frequent_day=day_counts.items|dictsort:"1"|last %}
-                            {{ most_frequent_day.1 }} sessions).
-                            {% endwith %}
+                                <span class="font-medium">{{ most_frequent_day.0 }}s</span>
+                                ({{ most_frequent_day.1 }} sessions).
+                            {% endwith %} 
                         {% endif %}
                         Your average session lasts 
                         <span class="font-medium">{{ stats.avg_minutes }} minutes</span>.

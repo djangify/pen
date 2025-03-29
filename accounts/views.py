@@ -176,10 +176,10 @@ def add_favourite_prompt(request, prompt_id):
     
     if prompt in user_profile.favourite_prompts.all():
         user_profile.favourite_prompts.remove(prompt)
-        messages.success(request, 'Prompt removed from your favourites.')
+        messages.success(request, 'Prompt removed from your profile.')
     else:
         user_profile.favourite_prompts.add(prompt)
-        messages.success(request, 'Prompt added to your favourites.')
+        messages.success(request, 'Prompt added to your profile.')
     
     # If the request is AJAX, return a JSON response
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':

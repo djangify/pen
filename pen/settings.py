@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'django_prose_editor',
+    'tinymce', 
     'prompt',
     'accounts',
     'blog',
@@ -180,3 +180,41 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Password reset settings
 PASSWORD_RESET_TIMEOUT = 86400  # 24 hours in seconds
+
+# Add TinyMCE configuration 
+TINYMCE_DEFAULT_CONFIG = {
+    'height': 660,
+    'width': 'auto',
+    'forced_root_block': 'p',
+    'remove_trailing_brs': False,
+    'end_container_on_empty_block': True,
+    'formats': {
+        'p': { 'block': 'p', 'styles': { 'margin-bottom': '1.5em' } }
+    },
+    'cleanup_on_startup': True,
+    'custom_undo_redo_levels': 20,
+    'selector': 'textarea',
+    'theme': 'silver',
+    'plugins': '''
+        textcolor save link image media preview codesample contextmenu
+        table code lists fullscreen insertdatetime nonbreaking
+        contextmenu directionality searchreplace wordcount visualblocks
+        visualchars code fullscreen autolink lists charmap print hr
+        anchor pagebreak
+        ''',
+    'toolbar1': '''
+        fullscreen preview bold italic underline | fontselect,
+        fontsizeselect | forecolor backcolor | alignleft alignright |
+        aligncenter alignjustify | indent outdent | bullist numlist table |
+        | link image media | codesample |
+        ''',
+    'toolbar2': '''
+        visualblocks visualchars |
+        charmap hr pagebreak nonbreaking anchor | code |
+        ''',
+    'contextmenu': 'formats | link image',
+    'menubar': True,
+    'statusbar': True,
+    
+}
+

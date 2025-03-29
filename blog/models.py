@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
 from django.utils import timezone
-from django_prose_editor.fields import ProseEditorField
+from tinymce.models import HTMLField 
 
 
 class Category(models.Model):
@@ -47,7 +47,7 @@ class Post(models.Model):
     publish_date = models.DateTimeField(null=True, blank=True)
 
     # Content
-    content = ProseEditorField(verbose_name="Blog Content")
+    content = HTMLField(verbose_name="Blog Content")
     resource_type = models.CharField(max_length=20, choices=RESOURCE_TYPES, default="none")
     resource_title = models.CharField(max_length=100, blank=True, help_text="Title for the downloadable resource")
     resource = models.FileField(upload_to="blog/resources/", null=True, blank=True)
