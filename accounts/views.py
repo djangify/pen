@@ -73,13 +73,8 @@ def send_verification_email(request, user):
             fail_silently=False,
         )
         return True
-    except Exception as e:
-        print(f"Error sending verification email: {e}")
-        # Add more detailed logging here
-        import traceback
-        traceback.print_exc()  # This will print the full traceback
+    except Exception:
         return False
-
 
 def verification_sent(request):
     return render(request, "accounts/verification_sent.html")
