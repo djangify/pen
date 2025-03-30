@@ -10,5 +10,6 @@ urlpatterns = [
     path('paperback_notebook', views.notebook, name='notebook' ),
     path('policy/privacy-policy/', views.privacy_policy, name='privacy_policy'),
     path('policy/advertising-policy/', views.advertising_policy, name='advertising_policy'),
-    path('policy/terms-conditions/', views.terms_conditions, name='terms_conditions')
+    path('policy/terms-conditions/', views.terms_conditions, name='terms_conditions'),
+    path('robots.txt', views.robots_txt, name='robots_txt'),
 ]

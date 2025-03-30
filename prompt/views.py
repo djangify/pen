@@ -50,6 +50,7 @@ class WritingPromptViewSet(viewsets.ReadOnlyModelViewSet):  # Changed to ReadOnl
             
         return queryset
 
+
 @api_view(['GET'])
 @permission_classes([permissions.AllowAny])
 def random_prompt(request):
@@ -68,27 +69,19 @@ def random_prompt(request):
     # Start with all active prompts
     prompts = WritingPrompt.objects.filter(active=True)
     
-    # Log filtering parameters for debugging
-    print(f"Filtering prompts with: category={category_slug}, difficulty={difficulty}, type={prompt_type}, current_id={current_prompt_id}")
-    print(f"Initial prompt count: {prompts.count()}")
-    
     # Apply filters if provided
     if category_slug and category_slug != '':
         prompts = prompts.filter(category__slug=category_slug)
-        print(f"After category filter: {prompts.count()} prompts")
     
     if difficulty and difficulty != '':
         prompts = prompts.filter(difficulty=difficulty)
-        print(f"After difficulty filter: {prompts.count()} prompts")
     
     if prompt_type and prompt_type != '' and prompt_type != 'both':
         prompts = prompts.filter(prompt_type__in=[prompt_type, 'both'])
-        print(f"After type filter: {prompts.count()} prompts")
     
     # Exclude current prompt if getting another one
     if current_prompt_id and current_prompt_id.isdigit():
         prompts = prompts.exclude(id=int(current_prompt_id))
-        print(f"After excluding current prompt: {prompts.count()} prompts")
     
     # Initialize the session if it doesn't exist
     if not request.session.session_key:
@@ -97,8 +90,6 @@ def random_prompt(request):
     # Get shown prompts from session
     session_key = f"shown_prompts_{category_slug or 'all'}_{difficulty or 'all'}_{prompt_type or 'all'}"
     shown_prompts = request.session.get(session_key, [])
-    
-    print(f"Previously shown prompts for this session/filter combination: {shown_prompts}")
     
     # Create a working copy of the queryset before applying session-based filtering
     available_prompts = prompts
@@ -111,13 +102,11 @@ def random_prompt(request):
         
         # Apply the exclusion filter
         available_prompts = available_prompts.exclude(id__in=prompts_to_exclude)
-        print(f"After excluding previously shown prompts: {available_prompts.count()} prompts")
     
     # Check if we have any prompts after all filtering
     if not available_prompts.exists():
         # If we've excluded all prompts based on session history, reset and use all prompts
         if prompts.exists():
-            print("All matching prompts have been shown already, resetting history")
             available_prompts = prompts
             shown_prompts = []  # Reset the shown prompts
             request.session[session_key] = shown_prompts
@@ -129,7 +118,6 @@ def random_prompt(request):
                     "message": "You've seen all prompts matching these filters. Try different options.",
                     "no_more_prompts": True
                 }
-                print("No more prompts available with these filters")
                 return Response(response_data, status=200)
             else:
                 # No prompts at all with these filters
@@ -137,7 +125,6 @@ def random_prompt(request):
                     "message": "No prompts found with these filters. Try different options.",
                     "no_prompts": True
                 }
-                print("No prompts available with these filters")
                 return Response(response_data, status=200)
     
     # Select a random prompt
@@ -165,8 +152,6 @@ def random_prompt(request):
         request.session[session_key] = shown_prompts
         # Save session explicitly to ensure it's stored
         request.session.modified = True
-    
-    print(f"Selected prompt ID: {prompt.id}, updated shown_prompts: {shown_prompts}")
     
     return Response(response_data)
 
