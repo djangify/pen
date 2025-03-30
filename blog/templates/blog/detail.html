@@ -1,6 +1,36 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block open_graph_tags %}
+<!-- Facebook required properties -->
+<meta property="og:title" content="{{ post.title }}" />
+<meta property="og:description" content="{{ post.meta_description|default:post.content|striptags|truncatechars:160 }}" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="{{ request.build_absolute_uri }}" />
+
+<!-- Image handling with absolute URLs -->
+{% if post.external_image_url %}
+    <meta property="og:image" content="{{ post.external_image_url }}" />
+{% elif post.get_image_url %}
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ post.get_image_url }}" />
+{% elif post.youtube_url %}
+    <meta property="og:image" content="https://img.youtube.com/vi/{{ post.get_youtube_video_id }}/maxresdefault.jpg" />
+{% else %}
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'img/pen-pub-purp.jpg' %}" />
+{% endif %}
+
+<!-- Additional recommended properties -->
+<meta property="og:site_name" content="Pen And I Publishing" />
+<meta property="og:locale" content="en_GB" />
+
+<!-- Article specific properties -->
+<meta property="article:published_time" content="{{ post.publish_date|date:'c' }}" />
+<meta property="article:author" content="Pen And I Publishing" />
+<meta property="article:section" content="{{ post.category.name }}" />
+
+<!-- Facebook app ID if you have one -->
+<!-- <meta property="fb:app_id" content="your_app_id" /> -->
+{% endblock %}
 
 {% block content %}
 
@@ -45,7 +75,7 @@
         </div>
         {% endif %}
 
-        <div class="prose prose-lg text-gray-800 leading-relaxed blog-content">
+        <div class="lg:text-lg text-gray-800 leading-relaxed blog-content">
             {{ post.content|safe }}
         </div>
 

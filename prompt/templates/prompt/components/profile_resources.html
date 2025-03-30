@@ -1,7 +1,7 @@
 {% load static %}
 
 <!-- Member Resources Section -->
-<div class="bg-white shadow-md rounded-lg overflow-hidden mt-4">
+<div class="bg-white shadow-md rounded-lg overflow-hidden mt-4 lg:text-lg">
   <!-- Accordion Header -->
   <button
     class="accordion-header w-full flex justify-between items-center p-6 hover:bg-gray-50 focus:outline-none"
@@ -30,7 +30,7 @@
     class="accordion-content hidden border-t border-gray-200 p-6"
   >
     {% if member_resources %}
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 ">
       {% for resource in member_resources %}
       <div
         class="border rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-200"
@@ -43,7 +43,7 @@
           />
           <div class="p-4">
             <h3 class="font-medium text-gray-900 mb-1">{{ resource.title }}</h3>
-            <p class="text-sm text-gray-600 mb-2">
+            <p class="text-md text-gray-600 mb-2">
               {{ resource.description|truncatechars:60 }}
             </p>
             <span class="inline-flex items-center text-purple-600 text-sm">
