@@ -2,6 +2,8 @@
 from django.shortcuts import render
 from django.utils import timezone
 from blog.models import Post
+from django.http import HttpResponse
+from django.views.decorators.http import require_GET
 import logging
 
 def home_view(request):
@@ -68,4 +70,16 @@ def advertising_policy(request):
     }
     return render(request, 'policy/advertising_policy.html', context)
 
+
+
+@require_GET
+def robots_txt(request):
+    lines = [
+        "User-agent: *",
+        "Disallow: /admin/",
+        "Disallow: /accounts/",
+        "Allow: /",
+        f"Sitemap: {request.build_absolute_uri('/sitemap.xml')}"
+    ]
+    return HttpResponse("\n".join(lines), content_type="text/plain")
 
