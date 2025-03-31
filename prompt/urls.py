@@ -14,6 +14,9 @@ router.register(r'prompts', views.WritingPromptViewSet)
 urlpatterns = [
     path('api/', include(router.urls)),
     path('api/random-prompt/', views.random_prompt, name='random-prompt'),
+
+    # Prompt Generator dedicated page
+    path('journal-prompt-generator/', views.journal_prompt_generator, name='journal_prompt_generator'),
     
     # Writing tracker URLs
     path('writing-progress/', views_tracker.writing_progress, name='writing_progress'),

@@ -185,3 +185,10 @@ def add_favourite_prompt(request, prompt_id):
     # Otherwise redirect back to referring page
     messages.success(request, message)
     return redirect(request.META.get('HTTP_REFERER', 'core:home'))
+
+
+def journal_prompt_generator(request):
+    """
+    Dedicated page for journal prompt generator
+    """
+    return render(request, 'prompt/journal_prompt_generator.html')
