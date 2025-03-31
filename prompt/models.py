@@ -15,8 +15,13 @@ class PromptCategory(models.Model):
     def __str__(self):
         return self.name
     
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('prompt:category', kwargs={'slug': self.slug})
+    
     class Meta:
         verbose_name_plural = "Prompt categories"
+        ordering = ['name']
 
 class WritingPrompt(models.Model):
     DIFFICULTY_CHOICES = [

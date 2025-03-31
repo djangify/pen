@@ -18,7 +18,7 @@ class WritingPromptAdmin(admin.ModelAdmin):
     filter_horizontal = ('tags',)
     
     def text_preview(self, obj):
-        return obj.text[:50] + ('...' if len(self.text) > 50 else '')
+        return obj.text[:50] + ('...' if len(obj.text) > 50 else '')
     text_preview.short_description = 'Prompt'
 
 class WritingGoalAdmin(admin.ModelAdmin):
