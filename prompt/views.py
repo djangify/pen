@@ -192,3 +192,12 @@ def journal_prompt_generator(request):
     Dedicated page for journal prompt generator
     """
     return render(request, 'prompt/journal_prompt_generator.html')
+
+
+def prompt_category_view(request, slug):
+    category = get_object_or_404(PromptCategory, slug=slug)
+    prompts = WritingPrompt.objects.filter(category=category, active=True)
+    return render(request, 'prompt/category.html', {
+        'category': category,
+        'prompts': prompts
+    })
