@@ -14,6 +14,7 @@ router.register(r'prompts', views.WritingPromptViewSet)
 urlpatterns = [
     path('api/', include(router.urls)),
     path('api/random-prompt/', views.random_prompt, name='random-prompt'),
+    path('category/<slug:slug>/', views.prompt_category_view, name='category'),
 
     # Prompt Generator dedicated page
     path('journal-prompt-generator/', views.journal_prompt_generator, name='journal_prompt_generator'),
