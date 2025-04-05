@@ -1,56 +1,96 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block title %}Privacy Policy{% endblock %}
+
 {% block content %}
-<div class="container mx-auto px-4 py-8">
-    <div class="bg-white shadow-md rounded-lg overflow-hidden">
-        <div class="px-6 py-8 md:p-10">
-            <h1 class="text-3xl font-bold text-gray-900 mb-6">Privacy Policy</h1>
-            
-            <div class="prose prose-lg text-gray-700 mb-10">
-                <p class="mb-4">At Pen and I Publishing, we value your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you use our website.</p>
-                
-                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">Who we are</h2>
-                <p>Our website address is: <a href="https://penandipublishing.co.uk" class="text-purple-600 hover:text-blue-800">https://penandipublishing.co.uk</a> and <a href="https://penandipublishing.com" class="text-purple-600 hover:text-blue-800">https://penandipublishing.com</a></p>
-                
-                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">Cookies</h2>
-                <p>If you visit our login page, we will set a temporary cookie to determine if your browser accepts cookies. This cookie contains no personal data and is discarded when you close your browser.</p>
-                
-                <p>When you log in, we will also set up several cookies to save your login information and your screen display choices. Login cookies last for two days, and screen options cookies last for a year. If you select "Remember Me", your login will persist for two weeks. If you log out of your account, the login cookies will be removed.</p>
-                
-                <p>If you edit or publish an article, an additional cookie will be saved in your browser. This cookie includes no personal data and simply indicates the post ID of the article you just edited. It expires after 1 day.</p>
-                
-                <p>If you leave a comment on our site you may opt-in to saving your name, email address and website in cookies. These are for your convenience so that you do not have to fill in your details again when you leave another comment. These cookies will last for one year.</p>
-                
-                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">Embedded content from other websites</h2>
-                <p>Articles on this site may include embedded content (e.g. videos, images, articles, etc.). Embedded content from other websites behaves in the exact same way as if the visitor has visited the other website.</p>
-                
-                <p>These websites may collect data about you, use cookies, embed additional third-party tracking, and monitor your interaction with that embedded content, including tracking your interaction with the embedded content if you have an account and are logged in to that website.</p>
-                
-                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">Who we share your data with</h2>
-                <p>If you request a password reset, your IP address will be included in the reset email.</p>
-                
-                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">How long we retain your data</h2>
-                <p>If you leave a comment, the comment and its metadata are retained indefinitely. This is so we can recognize and approve any follow-up comments automatically instead of holding them in a moderation queue.</p>
-                
-                <p>For users that register on our website (if any), we also store the personal information they provide in their user profile. All users can see, edit, or delete their personal information at any time (except they cannot change their username). Website administrators can also see and edit that information.</p>
-                
-                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">What rights you have over your data</h2>
-                <p>If you have an account on this site, or have left comments, you can request to receive an exported file of the personal data we hold about you, including any data you have provided to us. You can also request that we erase any personal data we hold about you. This does not include any data we are obliged to keep for administrative, legal, or security purposes.</p>
-                
-                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">Where we send your data</h2>
-                <p>Visitor comments may be checked through an automated spam detection service.</p>
-                
-                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">Comments</h2>
-                <p>We currently don't accept comments but if that changes, when visitors leave comments on the site we collect the data shown in the comments form, and also the visitor's IP address and browser user agent string to help spam detection.</p>
-                
-                <p>An anonymized string created from your email address (also called a hash) may be provided to the Gravatar service to see if you are using it. The Gravatar service privacy policy is available here: https://automattic.com/privacy/. After approval of your comment, your profile picture is visible to the public in the context of your comment.</p>
-                
-                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">Contact Us</h2>
-                <p>If you have any questions about our Privacy Policy, please contact us at: <a href="mailto:admin@penandipublishing.co.uk" class="text-purple-600 hover:text-blue-800">admin@penandipublishing.co.uk</a></p>
-                
-                <p class="text-sm mt-8 text-gray-500">Last updated: March 2025</p>
+<div class="bg-white py-12">
+ 
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Table of Contents -->
+        <div class="mb-12">
+            <h1 class="text-4xl font-bold text-gray-900 mb-8">Privacy Policy</h1>
+            <p class="text-gray-600 mb-6">Last updated: March 2025</p>
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <h2 class="text-lg font-semibold mb-4">Contents:</h2>
+                <nav class="space-y-2">
+                    <a href="#introduction" class="block text-blue-600 hover:text-blue-800">1. Introduction</a>
+                    <a href="#who-we-are" class="block text-blue-600 hover:text-blue-800">2. Who we are</a>
+                    <a href="#cookies" class="block text-blue-600 hover:text-blue-800">3. Cookies</a>
+                    <a href="#embedded-content" class="block text-blue-600 hover:text-blue-800">4. Embedded content from other websites</a>
+                    <a href="#data-sharing" class="block text-blue-600 hover:text-blue-800">5. Who we share your data with</a>
+                    <a href="#data-retention" class="block text-blue-600 hover:text-blue-800">6. How long we retain your data</a>
+                    <a href="#your-rights" class="block text-blue-600 hover:text-blue-800">7. What rights you have over your data</a>
+                    <a href="#data-transfer" class="block text-blue-600 hover:text-blue-800">8. Where we send your data</a>
+                    <a href="#comments" class="block text-blue-600 hover:text-blue-800">9. Comments</a>
+                    <a href="#contact" class="block text-blue-600 hover:text-blue-800">10. Contact Us</a>
+                </nav>
             </div>
+        </div>
+
+        <!-- Privacy Policy Content -->
+        <div class="prose prose-blue max-w-none">
+            <section id="introduction" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">1. Introduction</h2>
+                <p class="mb-4">At Pen and I Publishing, we value your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you use our website.</p>
+            </section>
+
+            <section id="who-we-are" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">2. Who we are</h2>
+                <p class="mb-4">Our website address is: <a href="https://penandipublishing.co.uk" class="text-blue-600 hover:text-blue-800">https://penandipublishing.co.uk</a> and <a href="https://penandipublishing.com" class="text-blue-600 hover:text-blue-800">https://penandipublishing.com</a></p>
+            </section>
+
+            <section id="cookies" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">3. Cookies</h2>
+                <p class="mb-4">If you visit our login page, we will set a temporary cookie to determine if your browser accepts cookies. This cookie contains no personal data and is discarded when you close your browser.</p>
+                
+                <p class="mb-4">When you log in, we will also set up several cookies to save your login information and your screen display choices. Login cookies last for two days, and screen options cookies last for a year. If you select "Remember Me", your login will persist for two weeks. If you log out of your account, the login cookies will be removed.</p>
+                
+                <p class="mb-4">If you edit or publish an article, an additional cookie will be saved in your browser. This cookie includes no personal data and simply indicates the post ID of the article you just edited. It expires after 1 day.</p>
+                
+                <p class="mb-4">If you leave a comment on our site you may opt-in to saving your name, email address and website in cookies. These are for your convenience so that you do not have to fill in your details again when you leave another comment. These cookies will last for one year.</p>
+            </section>
+
+            <section id="embedded-content" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">4. Embedded content from other websites</h2>
+                <p class="mb-4">Articles on this site may include embedded content (e.g. videos, images, articles, etc.). Embedded content from other websites behaves in the exact same way as if the visitor has visited the other website.</p>
+                
+                <p class="mb-4">These websites may collect data about you, use cookies, embed additional third-party tracking, and monitor your interaction with that embedded content, including tracking your interaction with the embedded content if you have an account and are logged in to that website.</p>
+            </section>
+
+            <section id="data-sharing" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">5. Who we share your data with</h2>
+                <p class="mb-4">If you request a password reset, your IP address will be included in the reset email.</p>
+            </section>
+
+            <section id="data-retention" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">6. How long we retain your data</h2>
+                <p class="mb-4">If you leave a comment, the comment and its metadata are retained indefinitely. This is so we can recognize and approve any follow-up comments automatically instead of holding them in a moderation queue.</p>
+                
+                <p class="mb-4">For users that register on our website (if any), we also store the personal information they provide in their user profile. All users can see, edit, or delete their personal information at any time (except they cannot change their username). Website administrators can also see and edit that information.</p>
+            </section>
+
+            <section id="your-rights" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">7. What rights you have over your data</h2>
+                <p class="mb-4">If you have an account on this site, or have left comments, you can request to receive an exported file of the personal data we hold about you, including any data you have provided to us. You can also request that we erase any personal data we hold about you. This does not include any data we are obliged to keep for administrative, legal, or security purposes.</p>
+            </section>
+
+            <section id="data-transfer" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">8. Where we send your data</h2>
+                <p class="mb-4">Visitor comments may be checked through an automated spam detection service.</p>
+            </section>
+
+            <section id="comments" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">9. Comments</h2>
+                <p class="mb-4">We currently don't accept comments but if that changes, when visitors leave comments on the site we collect the data shown in the comments form, and also the visitor's IP address and browser user agent string to help spam detection.</p>
+                
+                <p class="mb-4">An anonymized string created from your email address (also called a hash) may be provided to the Gravatar service to see if you are using it. The Gravatar service privacy policy is available here: https://automattic.com/privacy/. After approval of your comment, your profile picture is visible to the public in the context of your comment.</p>
+            </section>
+
+            <section id="contact" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">10. Contact Us</h2>
+                <p class="mb-4">If you have any questions about our Privacy Policy, please contact us at: <a href="mailto:admin@penandipublishing.co.uk" class="text-blue-600 hover:text-blue-800">admin@penandipublishing.co.uk</a></p>
+            </section>
         </div>
     </div>
 </div>

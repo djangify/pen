@@ -1,120 +1,185 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block title %}Terms and Conditions{% endblock %}
+
 {% block content %}
-<div class="container mx-auto px-4 py-8">
-    <div class="bg-white shadow-md rounded-lg overflow-hidden">
-        <div class="px-6 py-8 md:p-10">
-            <h1 class="text-3xl font-bold text-gray-900 mb-6">Terms and Conditions</h1>
-            
-            <div class="prose prose-lg text-gray-700 mb-10">
-                <p class="mb-4">This Agreement ("Agreement") is made effective by and between Pen and I Publishing (the "Company"), and the product purchaser (hereafter "Client"), for the purpose of Client purchasing a digital or physical product from Company's online shop (the "Product"). Client agrees to the terms and conditions below by submitting payment for the Product. Any queries can be sent to <a href="mailto:admin@penandipublishing.co.uk" class="text-purple-600 hover:text-blue-800">admin@penandipublishing.co.uk</a></p>
+<div class="bg-white py-12">
+    <!-- Include the breadcrumb here -->
+{% comment %} {% include "core/components/breadcrumb.html" %} {% endcomment %}
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Table of Contents -->
+        <div class="mb-12">
+            <h1 class="text-4xl font-bold text-gray-900 mb-8">Terms and Conditions</h1>
+            <p class="text-gray-600 mb-6">Last updated: March 2025</p>
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <h2 class="text-lg font-semibold mb-4">Contents:</h2>
+                <nav class="space-y-2">
+                    <a href="#introduction" class="block text-blue-600 hover:text-blue-800">1. Introduction</a>
+                    <a href="#digital-usage" class="block text-blue-600 hover:text-blue-800">2. Usage of any Digital Product</a>
+                    <a href="#physical-products" class="block text-blue-600 hover:text-blue-800">3. Buying physical products</a>
+                    <a href="#fees-payment" class="block text-blue-600 hover:text-blue-800">4. Fees & Payment Processing</a>
+                    <a href="#refund-policy" class="block text-blue-600 hover:text-blue-800">5. Refund Policy</a>
+                    <a href="#personal-information" class="block text-blue-600 hover:text-blue-800">6. Personal Information</a>
+                    <a href="#copyright" class="block text-blue-600 hover:text-blue-800">7. Copyright</a>
+                    <a href="#warranties" class="block text-blue-600 hover:text-blue-800">8. Warranties and Liability</a>
+                    <a href="#force-majeure" class="block text-blue-600 hover:text-blue-800">9. Force Majeure</a>
+                    <a href="#guarantees" class="block text-blue-600 hover:text-blue-800">10. Guarantees</a>
+                    <a href="#release" class="block text-blue-600 hover:text-blue-800">11. Release & Reasonable Expectations</a>
+                    <a href="#entire-agreement" class="block text-blue-600 hover:text-blue-800">12. Entire Agreement</a>
+                    <a href="#venue" class="block text-blue-600 hover:text-blue-800">13. Venue and Jurisdiction</a>
+                    <a href="#transfer" class="block text-blue-600 hover:text-blue-800">14. Transfer</a>
+                    <a href="#severability" class="block text-blue-600 hover:text-blue-800">15. Severability</a>
+                    <a href="#contact" class="block text-blue-600 hover:text-blue-800">16. Contact Us</a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Terms and Conditions Content -->
+        <div class="prose prose-blue max-w-none">
+            <section id="introduction" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">1. Introduction</h2>
+                <p class="mb-4">This Agreement ("Agreement") is made effective by and between Pen and I Publishing (the "Company"), and the product purchaser (hereafter "Client"), for the purpose of Client purchasing a digital or physical product from Company's online shop (the "Product"). Client agrees to the terms and conditions below by submitting payment for the Product. Any queries can be sent to <a href="mailto:admin@penandipublishing.co.uk" class="text-blue-600 hover:text-blue-800">admin@penandipublishing.co.uk</a></p>
+            </section>
+
+            <section id="digital-usage" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">2. Usage of any Digital Product</h2>
+                <p class="mb-4">After purchasing the digital product, Client will be given access to the product materials immediately delivered in his/her email. Client will have to click on the download link to download the product. Client will have the opportunity to download a product up to 3-5 times and no more. Client will be given lifetime access to the materials so long as the product(s) is/are available.</p>
                 
-                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">1. Usage of any Digital Product</h2>
-                <p>After purchasing the digital product, Client will be given access to the product materials immediately delivered in his/her email. Client will have to click on the download link to download the product. Client will have the opportunity to download a product up to 3-5 times and no more. Client will be given lifetime access to the materials so long as the product(s) is/are available.</p>
+                <p class="mb-4">Company hereby grants to Client one (1) exclusive, non-sublicensable, non-transferable, license to use the Product. Client understands and agrees that the Product materials may not be shared with any third party, but further downloads are available in the event of a Client being unable to find the original. In the event Company suspects that the Product is being shared with another party, Company reserves the right to immediately terminate Client's access to the Product.</p>
                 
-                <p>Company hereby grants to Client one (1) exclusive, non-sublicensable, non-transferable, license to use the Product. Client understands and agrees that the Product materials may not be shared with any third party, but further downloads are available in the event of a Client being unable to find the original. In the event Company suspects that the Product is being shared with another party, Company reserves the right to immediately terminate Client's access to the Product.</p>
+                <p class="mb-4">Client may use the Product for his/her own personal use and business use. Client is not obligated to tag or give credit to Company for the copy in the Product he/she uses, posts, or shares.</p>
+            </section>
+
+            <section id="physical-products" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">3. Buying physical products</h2>
+                <p class="mb-4">After purchasing a physical product from the Company, information will be sent to the supplier who will send the product to the Client. Some links may take the Client to third party sites e.g. Amazon or Gelato to purchase the product.</p>
+            </section>
+
+            <section id="fees-payment" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">4. Fees & Payment Processing</h2>
+                <p class="mb-4">In consideration for access to the Product provided by Company, Client agrees to compensate Company the fee indicated on the online shopping cart. If any payment methods are declined by the online payment processor, Client shall provide a new eligible payment method before receiving access to the Product. In the event Client has already been given access to the Product and a payment method is declined, Company reserves the right to collect any and all outstanding receivables. Payment of any fees by Client means an understanding of these terms and conditions has been made.</p>
+            </section>
+
+            <section id="refund-policy" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">5. Refund Policy</h2>
                 
-                <p>Client may use the Product for his/her own personal use and business use. Client is not obligated to tag or give credit to Company for the copy in the Product he/she uses, posts, or shares.</p>
+                <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">5.1 Digital Products</h3>
+                <p class="mb-4">Due to the nature of digital products being immediately accessible upon purchasing, no refunds of any fees or other amounts paid by Client in connection with the Product will be allowed under any circumstances. If the product fails or if there is a fault/issue with the Product Client can email the Company at <a href="mailto:admin@penandipublishing.co.uk" class="text-blue-600 hover:text-blue-800">admin@penandipublishing.co.uk</a> to explain failure. A refund will be issued if the Company is seen to be at fault.</p>
                 
-                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">1b. Buying physical products</h2>
-                <p>After purchasing a physical product from the Company, information will be sent to the supplier who will send the product to the Client. Some links may take the Client to third party sites e.g. Amazon or Gelato to purchase the product.</p>
+                <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">5.2 Physical Products</h3>
+                <p class="mb-4">Physical products are provided by third party retailers e.g. Gelato or Amazon. Please see the Amazon refund policy for notebooks and journals.</p>
                 
-                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">2. Fees & Payment Processing</h2>
-                <p>In consideration for access to the Product provided by Company, Client agrees to compensate Company the fee indicated on the online shopping cart. If any payment methods are declined by the online payment processor, Client shall provide a new eligible payment method before receiving access to the Product. In the event Client has already been given access to the Product and a payment method is declined, Company reserves the right to collect any and all outstanding receivables. Payment of any fees by Client means an understanding of these terms and conditions has been made.</p>
+                <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">5.3 Refund Overview</h3>
+                <p class="mb-4">Our refund and returns policy lasts 30 days and is for physical products only (please see digital products above). If 30 days have passed since your purchase, we can't offer you a full refund or exchange.</p>
                 
-                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">3. Refund Policy</h2>
-                
-                <h3 class="text-xl font-semibold mt-6 mb-2 text-gray-800">Digital Products</h3>
-                <p>Due to the nature of digital products being immediately accessible upon purchasing, no refunds of any fees or other amounts paid by Client in connection with the Product will be allowed under any circumstances. If the product fails or if there is a fault/issue with the Product Client can email the Company at <a href="mailto:admin@penandipublishing.co.uk" class="text-purple-600 hover:text-blue-800">admin@penandipublishing.co.uk</a> to explain failure. A refund will be issued if the Company is seen to be at fault.</p>
-                
-                <h3 class="text-xl font-semibold mt-6 mb-2 text-gray-800">Physical Products</h3>
-                <p>Physical products are provided by third party retailers e.g. Gelato or Amazon. Please see the Amazon refund policy for notebooks and journals.</p>
-                
-                <h3 class="text-xl font-semibold mt-6 mb-2 text-gray-800">Refund Overview</h3>
-                <p>Our refund and returns policy lasts 30 days and is for physical products only (please see digital products above). If 30 days have passed since your purchase, we can't offer you a full refund or exchange.</p>
-                
-                <p>To be eligible for a return, your item must be unused and in the same condition that you received it. It must also be in the original packaging. To complete your return, we require a receipt or proof of purchase. There are certain situations where only partial refunds are granted:</p>
-                <ul class="list-disc pl-6 mb-6">
+                <p class="mb-4">To be eligible for a return, your item must be unused and in the same condition that you received it. It must also be in the original packaging. To complete your return, we require a receipt or proof of purchase. There are certain situations where only partial refunds are granted:</p>
+                <ul class="list-disc pl-6 mb-4">
                     <li>Book with obvious signs of use</li>
                     <li>An item that has been opened and is not faulty</li>
                     <li>Any item not in its original condition, is damaged or missing parts for reasons not due to our error</li>
                     <li>Any item that is returned more than 30 days after delivery</li>
                 </ul>
                 
-                <h3 class="text-xl font-semibold mt-6 mb-2 text-gray-800">Refund Process</h3>
-                <p>Once your physical product return is received and inspected, we will send you an email to notify you that we have received your returned item. We will also notify you of the approval or rejection of your refund. If you are approved, then your refund will be processed, and a credit will automatically be applied to your credit card or original method of payment, within seven days.</p>
+                <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">5.4 Refund Process</h3>
+                <p class="mb-4">Once your physical product return is received and inspected, we will send you an email to notify you that we have received your returned item. We will also notify you of the approval or rejection of your refund. If you are approved, then your refund will be processed, and a credit will automatically be applied to your credit card or original method of payment, within seven days.</p>
                 
-                <h3 class="text-xl font-semibold mt-6 mb-2 text-gray-800">Late or missing refunds</h3>
-                <p>If you haven't received a refund yet, first check your bank account again.</p>
+                <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">5.5 Late or missing refunds</h3>
+                <p class="mb-4">If you haven't received a refund yet, first check your bank account again.</p>
                 
-                <p>Then contact your credit card company, it may take some time before your refund is officially posted.</p>
+                <p class="mb-4">Then contact your credit card company, it may take some time before your refund is officially posted.</p>
                 
-                <p>Next contact your bank. There is often some processing time before a refund is posted.</p>
+                <p class="mb-4">Next contact your bank. There is often some processing time before a refund is posted.</p>
                 
-                <p>If you've done all of this and you still have not received your refund yet, please contact us at <a href="mailto:admin@penandipublishing.co.uk" class="text-purple-600 hover:text-blue-800">admin@penandipublishing.co.uk</a></p>
+                <p class="mb-4">If you've done all of this and you still have not received your refund yet, please contact us at <a href="mailto:admin@penandipublishing.co.uk" class="text-blue-600 hover:text-blue-800">admin@penandipublishing.co.uk</a></p>
                 
-                <h3 class="text-xl font-semibold mt-6 mb-2 text-gray-800">Sale items</h3>
-                <p>Only regular priced items may be refunded. Sale items cannot be refunded.</p>
+                <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">5.6 Sale items</h3>
+                <p class="mb-4">Only regular priced items may be refunded. Sale items cannot be refunded.</p>
                 
-                <h3 class="text-xl font-semibold mt-6 mb-2 text-gray-800">Exchanges</h3>
-                <p>We only replace items if they are defective or damaged. If you need to exchange it for the same item, send us an email and we will let you know where to send your item to.</p>
+                <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">5.7 Exchanges</h3>
+                <p class="mb-4">We only replace items if they are defective or damaged. If you need to exchange it for the same item, send us an email and we will let you know where to send your item to.</p>
                 
-                <h3 class="text-xl font-semibold mt-6 mb-2 text-gray-800">Shipping returns</h3>
-                <p>To return your product, you should first contact <a href="mailto:admin@penandipublishing.co.uk" class="text-purple-600 hover:text-blue-800">admin@penandipublishing.co.uk</a> with details of your order number and the reason for return.</p>
+                <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">5.8 Shipping returns</h3>
+                <p class="mb-4">To return your product, you should first contact <a href="mailto:admin@penandipublishing.co.uk" class="text-blue-600 hover:text-blue-800">admin@penandipublishing.co.uk</a> with details of your order number and the reason for return.</p>
                 
-                <p>Client agrees to be responsible for paying for the shipping costs for returning an item. Shipping costs are non-refundable.</p>
+                <p class="mb-4">Client agrees to be responsible for paying for the shipping costs for returning an item. Shipping costs are non-refundable.</p>
                 
-                <p>Depending on where you live, the time it may take for your exchanged product to reach you may vary.</p>
+                <p class="mb-4">Depending on where you live, the time it may take for your exchanged product to reach you may vary.</p>
                 
-                <p>We recommend you receive receipt of postage and/or use a trackable shipping service or purchasing shipping insurance. We don't guarantee that we will receive your returned item.</p>
+                <p class="mb-4">We recommend you receive receipt of postage and/or use a trackable shipping service or purchasing shipping insurance. We don't guarantee that we will receive your returned item.</p>
                 
-                <h3 class="text-xl font-semibold mt-6 mb-2 text-gray-800">Gifts</h3>
-                <p>If the item was marked as a gift when purchased and shipped directly to you, you'll receive a gift credit for the value of your return. Once the returned item is received, a gift certificate will be mailed to you.</p>
+                <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">5.9 Gifts</h3>
+                <p class="mb-4">If the item was marked as a gift when purchased and shipped directly to you, you'll receive a gift credit for the value of your return. Once the returned item is received, a gift certificate will be mailed to you.</p>
                 
-                <p>If the item wasn't marked as a gift when purchased, or the gift giver had the order shipped to themselves to give to you later, we will send a refund to the gift giver and they will find out about your return.</p>
+                <p class="mb-4">If the item wasn't marked as a gift when purchased, or the gift giver had the order shipped to themselves to give to you later, we will send a refund to the gift giver and they will find out about your return.</p>
+            </section>
+
+            <section id="personal-information" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">6. Personal Information</h2>
+                <p class="mb-4">By purchasing the Product, Client will be asked to provide personal information including his/her name, email address, mailing and billing address. Client agrees to allow Company access to this personal information for all lawful purposes. Client is responsible for the accuracy of the identifying information, maintaining the safety and security of his/her identifying information, and updating Company on any changes to his/her identifying information.</p>
                 
-                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">4. Personal Information</h2>
-                <p>By purchasing the Product, Client will be asked to provide personal information including his/her name, email address, mailing and billing address. Client agrees to allow Company access to this personal information for all lawful purposes. Client is responsible for the accuracy of the identifying information, maintaining the safety and security of his/her identifying information, and updating Company on any changes to his/her identifying information.</p>
+                <p class="mb-4">The billing information provided to Company by Client will be kept secure and is subject to the same confidentiality and accuracy requirements as Client's identifying information indicated above. Providing false or inaccurate information, or using the Product for fraud or unlawful activity, is grounds for immediate termination from the Product.</p>
                 
-                <p>The billing information provided to Company by Client will be kept secure and is subject to the same confidentiality and accuracy requirements as Client's identifying information indicated above. Providing false or inaccurate information, or using the Product for fraud or unlawful activity, is grounds for immediate termination from the Product.</p>
+                <p class="mb-4">Company will not sell, rent, or lease Client's personal information to any third party. Company will not share Client's personal information with any third party unless required by law or in the event of a merger or acquisition.</p>
                 
-                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">5. Copyright</h2>
-                <p>Upon delivery of the digital product to Client, Company hereby transfers and assigns to Client all copyrights regarding the Product.</p>
+                <p class="mb-4">Company will take all reasonable steps to protect Client's personal information, but cannot guarantee the security of any information transmitted to or from Company via the internet. Client agrees that Company shall not be liable for any damages resulting from any unauthorized access to or use of Client's personal information.</p>
                 
-                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">6. Warranties and Liability</h2>
-                <p>Company makes every effort to ensure that the Product is accurate and fit for the use of Company's customers. However, Company takes no responsibility whatsoever for the suitability of the Product, and Company provides no warranties as to the function or use of the Product, whether express, implied or statutory, including without limitation any warranties of merchantability or fitness for particular purpose. Client agrees to indemnify Company against all liabilities, claims, demands, expenses, actions, costs, damages, or loss arising out of Client's breach of these terms and conditions. Company shall not be liable to Client or any third party for consequential, indirect, special or exemplary damages including but not limited to damages for loss of profits, business or anticipated benefits whether arising under tort, contract, negligence or otherwise whether or not foreseen, reasonably foreseeable or advised of the possibility of such damages.</p>
-                
-                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">7. Force Majeure</h2>
-                <p>If the performance of this Agreement or any obligations hereunder is prevented, restricted or interfered with by reason of earthquake, fire, flood or other casualty or due to strikes, riot, storms, explosions, acts of God, death of him/herself or a family member, war, terrorism, or a similar occurrence or condition beyond the reasonable control of the parties, the party so affected shall, upon giving prompt notice to the other party, be excused from such performance during such prevention, restriction or interference, and any failure or delay resulting therefrom shall not be considered a breach of this Agreement.</p>
-                
-                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">8. Guarantees</h2>
-                <p>Company does not make any guarantees as to the results, including financial or other personal gains, of Client's use of the Product. Client agrees to take responsibility for Client's own results with regard to using the Product.</p>
-                
-                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">9. Release & Reasonable Expectations</h2>
-                <p>Client has spent a satisfactory amount of time reviewing Company's business and has a reasonable expectation that Company's Product will produce different outcomes and results for each Client. Client understands and agrees that:</p>
-                <ul class="list-disc pl-6 mb-6">
+                <p class="mb-4">To request deletion of your personal data, please email us at admin@penandipublishing.co.uk with the subject line "Data Deletion Request." In your request, please specify what information you would like deleted and provide sufficient information to verify your identity. We will process your request within 30 days of receipt and confirm once deletion is complete. Please note that some information may be retained for legal, security, or fraud prevention purposes as permitted by applicable laws.</p>
+            </section>
+
+            <section id="copyright" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">7. Copyright</h2>
+                <p class="mb-4">Upon delivery of the digital product to Client, Company hereby transfers and assigns to Client all copyrights regarding the Product.</p>
+            </section>
+
+            <section id="warranties" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">8. Warranties and Liability</h2>
+                <p class="mb-4">Company makes every effort to ensure that the Product is accurate and fit for the use of Company's customers. However, Company takes no responsibility whatsoever for the suitability of the Product, and Company provides no warranties as to the function or use of the Product, whether express, implied or statutory, including without limitation any warranties of merchantability or fitness for particular purpose. Client agrees to indemnify Company against all liabilities, claims, demands, expenses, actions, costs, damages, or loss arising out of Client's breach of these terms and conditions. Company shall not be liable to Client or any third party for consequential, indirect, special or exemplary damages including but not limited to damages for loss of profits, business or anticipated benefits whether arising under tort, contract, negligence or otherwise whether or not foreseen, reasonably foreseeable or advised of the possibility of such damages.</p>
+            </section>
+
+            <section id="force-majeure" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">9. Force Majeure</h2>
+                <p class="mb-4">If the performance of this Agreement or any obligations hereunder is prevented, restricted or interfered with by reason of earthquake, fire, flood or other casualty or due to strikes, riot, storms, explosions, acts of God, death of him/herself or a family member, war, terrorism, or a similar occurrence or condition beyond the reasonable control of the parties, the party so affected shall, upon giving prompt notice to the other party, be excused from such performance during such prevention, restriction or interference, and any failure or delay resulting therefrom shall not be considered a breach of this Agreement.</p>
+            </section>
+
+            <section id="guarantees" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">10. Guarantees</h2>
+                <p class="mb-4">Company does not make any guarantees as to the results, including financial or other personal gains, of Client's use of the Product. Client agrees to take responsibility for Client's own results with regard to using the Product.</p>
+            </section>
+
+            <section id="release" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">11. Release & Reasonable Expectations</h2>
+                <p class="mb-4">Client has spent a satisfactory amount of time reviewing Company's business and has a reasonable expectation that Company's Product will produce different outcomes and results for each Client. Client understands and agrees that:</p>
+                <ul class="list-disc pl-6 mb-4">
                     <li>Every client and final result using the Product is different;</li>
                     <li>The Product is intended for a mass audience.</li>
                 </ul>
-                
-                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">10. Entire Agreement</h2>
-                <p>This is a binding Agreement that incorporates the entire understanding of the parties, supersedes any other written or oral agreements between the parties, and any modifications must be in writing, signed by both parties, and physically attached to the original agreement.</p>
-                
-                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">11. Venue and Jurisdiction</h2>
-                <p>The laws of the United Kingdom shall govern this contract, and any resulting arbitration shall take place within United Kingdom. Both parties assume responsibility for all collection costs and legal fees incurred should enforcement of this Agreement become necessary.</p>
-                
-                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">12. Transfer</h2>
-                <p>This agreement cannot be transferred or assigned to any third party without written consent of both parties.</p>
-                
-                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">13. Severability</h2>
-                <p>In the event that any part of this Agreement is found to be invalid or unenforceable, the remainder of this Agreement shall remain valid and enforceable. Any failure by one or both parties to enforce a provision of this Agreement shall not constitute a waiver of any other portion or provision of this agreement.</p>
-                
-                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">Contact Us</h2>
-                <p>If you have any questions about our Terms and Conditions, please contact us at: <a href="mailto:admin@penandipublishing.co.uk" class="text-purple-600 hover:text-blue-800">admin@penandipublishing.co.uk</a></p>
-                
-                <p class="text-sm mt-8 text-gray-500">Last updated: March 2025</p>
-            </div>
+            </section>
+
+            <section id="entire-agreement" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">12. Entire Agreement</h2>
+                <p class="mb-4">This is a binding Agreement that incorporates the entire understanding of the parties, supersedes any other written or oral agreements between the parties, and any modifications must be in writing, signed by both parties, and physically attached to the original agreement.</p>
+            </section>
+
+            <section id="venue" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">13. Venue and Jurisdiction</h2>
+                <p class="mb-4">The laws of the United Kingdom shall govern this contract, and any resulting arbitration shall take place within United Kingdom. Both parties assume responsibility for all collection costs and legal fees incurred should enforcement of this Agreement become necessary.</p>
+            </section>
+
+            <section id="transfer" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">14. Transfer</h2>
+                <p class="mb-4">This agreement cannot be transferred or assigned to any third party without written consent of both parties.</p>
+            </section>
+
+            <section id="severability" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">15. Severability</h2>
+                <p class="mb-4">In the event that any part of this Agreement is found to be invalid or unenforceable, the remainder of this Agreement shall remain valid and enforceable. Any failure by one or both parties to enforce a provision of this Agreement shall not constitute a waiver of any other portion or provision of this agreement.</p>
+            </section>
+
+            <section id="contact" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">16. Contact Us</h2>
+                <p class="mb-4">If you have any questions about our Terms and Conditions, please contact us at: <a href="mailto:admin@penandipublishing.co.uk" class="text-blue-600 hover:text-blue-800">admin@penandipublishing.co.uk</a></p>
+            </section>
         </div>
     </div>
 </div>
