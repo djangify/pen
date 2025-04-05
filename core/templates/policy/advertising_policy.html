@@ -1,43 +1,75 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block title %}Advertising and Affiliate Disclosure{% endblock %}
+
 {% block content %}
-<div class="container mx-auto px-4 py-8">
-    <div class="bg-white shadow-md rounded-lg overflow-hidden">
-        <div class="px-6 py-8 md:p-10">
-            <h1 class="text-3xl font-bold text-gray-900 mb-6">Advertising and Affiliate Disclosure</h1>
-            
-            <div class="prose prose-lg text-gray-700 mb-10">
-                <p class="mb-4">We really appreciate you checking out everything on offer here at Pen and I Publishing. For the most part, when you click a link you will be taken to one of our many free resources; however, sometimes you may be taken to an outside resource or website. This disclosure explains our advertising practices and affiliate relationships.</p>
-                
-                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">Affiliate Links</h2>
-                <p>In some instances, if you are encouraged to buy or sign up for something, you can assume that this is an affiliate link. Being an affiliate means if we recommend someone from our website to an outside service, they may compensate us by paying an affiliate fee. This does not affect you or your rights in any way.</p>
-                
-                <p>The exception to this is links to our paperback notebooks on Amazon, as we create these ourselves.</p>
-                
-                <p>When it is within our control, we promise to always promote products and services that serve your higher good. We only recommend products and services that we believe in and would use ourselves.</p>
-                
-                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">Google Advertising</h2>
-                <p>There may be ads shown on blog posts, in the sidebar, at the end of a blog post, or on the homepage. Wherever you see Google advertising, please only click if you are genuinely interested in the product.</p>
-                
-                <p>The advertising shown is not controlled by Pen and I Publishing – we have little control over what is displayed. If you dislike what appears, please contact us at <a href="mailto:admin@penandipublishing.co.uk" class="text-purple-600 hover:text-blue-800">admin@penandipublishing.co.uk</a>.</p>
-                
-                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">Get In Touch</h2>
-                <p>Our aim is to always provide you with honest and valuable informational content. If you feel we have let you down, please email us at <a href="mailto:admin@penandipublishing.co.uk" class="text-purple-600 hover:text-blue-800">admin@penandipublishing.co.uk</a> with your comments or concerns.</p>
-                
-                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">Information Only</h2>
-                <p>Just a reminder that the information contained in this website is for informational purposes only and is not a substitute for professional help and advice. Its aim is not to attempt to diagnose, treat, or cure people. Please consult a licensed healthcare professional for any issues related to your wellbeing.</p>
-                
-                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">Our Commitment</h2>
-                <p>At Pen and I Publishing, we believe in transparency and honesty. We want you to enjoy your experience on our website and trust that we have your best interests at heart. Our primary goal is to help you capture your life stories and memories in a way that's meaningful to you.</p>
-                
-                <p>We may occasionally recommend products or services that can help you on your writing journey, but we will always be clear about our relationships with these providers.</p>
-                
-                <h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-800">Contact Us</h2>
-                <p>If you have any questions about our advertising practices or affiliate relationships, please contact us at: <a href="mailto:admin@penandipublishing.co.uk" class="text-purple-600 hover:text-blue-800">admin@penandipublishing.co.uk</a></p>
-                
-                <p class="text-sm mt-8 text-gray-500">Last updated: March 2025</p>
+<div class="bg-white py-12">
+    <!-- Include the breadcrumb here -->
+{% include "core/components/breadcrumb.html" %}
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Table of Contents -->
+        <div class="mb-12">
+            <h1 class="text-4xl font-bold text-gray-900 mb-8">Advertising and Affiliate Disclosure</h1>
+            <p class="text-gray-600 mb-6">Last updated: March 2025</p>
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <h2 class="text-lg font-semibold mb-4">Contents:</h2>
+                <nav class="space-y-2">
+                    <a href="#introduction" class="block text-blue-600 hover:text-blue-800">1. Introduction</a>
+                    <a href="#affiliate-links" class="block text-blue-600 hover:text-blue-800">2. Affiliate Links</a>
+                    <a href="#google-advertising" class="block text-blue-600 hover:text-blue-800">3. Google Advertising</a>
+                    <a href="#get-in-touch" class="block text-blue-600 hover:text-blue-800">4. Get In Touch</a>
+                    <a href="#information-only" class="block text-blue-600 hover:text-blue-800">5. Information Only</a>
+                    <a href="#our-commitment" class="block text-blue-600 hover:text-blue-800">6. Our Commitment</a>
+                    <a href="#contact" class="block text-blue-600 hover:text-blue-800">7. Contact Us</a>
+                </nav>
             </div>
+        </div>
+
+        <!-- Advertising Policy Content -->
+        <div class="prose prose-blue max-w-none">
+            <section id="introduction" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">1. Introduction</h2>
+                <p class="mb-4">We really appreciate you checking out everything on offer here at Pen and I Publishing. For the most part, when you click a link you will be taken to one of our many free resources; however, sometimes you may be taken to an outside resource or website. This disclosure explains our advertising practices and affiliate relationships.</p>
+            </section>
+
+            <section id="affiliate-links" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">2. Affiliate Links</h2>
+                <p class="mb-4">In some instances, if you are encouraged to buy or sign up for something, you can assume that this is an affiliate link. Being an affiliate means if we recommend someone from our website to an outside service, they may compensate us by paying an affiliate fee. This does not affect you or your rights in any way.</p>
+                
+                <p class="mb-4">The exception to this is links to our paperback notebooks on Amazon, as we create these ourselves.</p>
+                
+                <p class="mb-4">When it is within our control, we promise to always promote products and services that serve your higher good. We only recommend products and services that we believe in and would use ourselves.</p>
+            </section>
+
+            <section id="google-advertising" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">3. Google Advertising</h2>
+                <p class="mb-4">There may be ads shown on blog posts, in the sidebar, at the end of a blog post, or on the homepage. Wherever you see Google advertising, please only click if you are genuinely interested in the product.</p>
+                
+                <p class="mb-4">The advertising shown is not controlled by Pen and I Publishing – we have little control over what is displayed. If you dislike what appears, please contact us at <a href="mailto:admin@penandipublishing.co.uk" class="text-blue-600 hover:text-blue-800">admin@penandipublishing.co.uk</a>.</p>
+            </section>
+
+            <section id="get-in-touch" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">4. Get In Touch</h2>
+                <p class="mb-4">Our aim is to always provide you with honest and valuable informational content. If you feel we have let you down, please email us at <a href="mailto:admin@penandipublishing.co.uk" class="text-blue-600 hover:text-blue-800">admin@penandipublishing.co.uk</a> with your comments or concerns.</p>
+            </section>
+
+            <section id="information-only" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">5. Information Only</h2>
+                <p class="mb-4">Just a reminder that the information contained in this website is for informational purposes only and is not a substitute for professional help and advice. Its aim is not to attempt to diagnose, treat, or cure people. Please consult a licensed healthcare professional for any issues related to your wellbeing.</p>
+            </section>
+
+            <section id="our-commitment" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">6. Our Commitment</h2>
+                <p class="mb-4">At Pen and I Publishing, we believe in transparency and honesty. We want you to enjoy your experience on our website and trust that we have your best interests at heart. Our primary goal is to help you capture your life stories and memories in a way that's meaningful to you.</p>
+                
+                <p class="mb-4">We may occasionally recommend products or services that can help you on your writing journey, but we will always be clear about our relationships with these providers.</p>
+            </section>
+
+            <section id="contact" class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">7. Contact Us</h2>
+                <p class="mb-4">If you have any questions about our advertising practices or affiliate relationships, please contact us at: <a href="mailto:admin@penandipublishing.co.uk" class="text-blue-600 hover:text-blue-800">admin@penandipublishing.co.uk</a></p>
+            </section>
         </div>
     </div>
 </div>
