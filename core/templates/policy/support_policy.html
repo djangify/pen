@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Support Policy - Djangify{% endblock %}
+
+{% block content %}
+<div class="p-6 bg-secondary text-text py-12">
+{% include "core/components/breadcrumb.html" %}
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Table of Contents -->
+        <div class="mb-12">
+            <h1 class="text-4xl font-bold mb-8">Support Policy</h1>
+            <p class="text-text/80 mb-6">Last updated: April 2025</p>
+            <div class="bg-primary bg-gray-50 p-6 rounded-lg">
+                <h2 class="text-lg  font-semibold mb-4">Contents:</h2>
+                <ul class="space-y-2">
+                  <li><a href="#overview" class="text-accent hover:text-text transition-colors">1. Overview</a></li>
+                  <li><a href="#payment-processing" class="text-accent hover:text-text transition-colors">2. Payment Processing</a></li>
+                  <li><a href="#associated-domains" class="text-accent hover:text-text transition-colors">3. Associated Domains</a></li>
+                  <li><a href="#support-options" class="text-accent hover:text-text transition-colors">4. Support Options</a></li>
+                  <li><a href="#contact-info" class="text-accent hover:text-text transition-colors">5. Contact Information</a></li>
+              </ul>
+            </div>
+        </div>
+
+        <!-- Support Policy Content -->
+        <div class="prose prose-invert max-w-none">
+            <section id="overview" class="mb-12">
+                <h2 class="text-2xl font-bold mb-4">1. Overview</h2>
+                <p class="mb-4">Welcome to our Support Policy. This document explains our payment processing system, the relationship between Djangify and our associated domains, and how to get support for products or services purchased from any Djangify-affiliated website.</p>
+            </section>
+
+            <section id="payment-processing" class="mb-12">
+                <h2 class="text-2xl font-bold mb-4">2. Payment Processing</h2>
+                <p class="mb-4">Djangify is a parent company that operates multiple websites and services. When you make a purchase from any of our affiliated websites, the payment is processed through Djangify.</p>
+                <p class="mb-4">You may see a charge from "Djangify" on your credit card statement or payment receipt. This is normal and indicates that your payment was processed successfully.</p>
+                <p class="mb-4">Please note the following:</p>
+                <p class="mb-4">If you see a charge from "Djangify" on your credit card statement, it means:</p>
+                <p class="mb-4">You have purchased a product or service from one of our associated domains.</p>
+                <p class="mb-4">The charge may appear as "Djangify" or "Djangify.com" on your statement.</p>
+                <p class="mb-4">If you have any questions or concerns about a charge from Djangify, please email djangify@djangify.com</p> To summarise:
+                <ul class="list-disc pl-6 mb-4">
+                    <li>The name "Djangify" will appear on your credit card statement or payment receipt</li>
+                    <li>All payments are securely processed through Stripe</li>
+                    <li>Receipts and invoices will be issued under the Djangify business name</li>
+                    <li>This is normal and indicates that your payment was processed successfully</li>
+                </ul>
+                
+            </section>
+
+            <section id="associated-domains" class="mb-12">
+                <h2 class="text-2xl font-bold mb-4">3. Associated Domains</h2>
+                <p class="mb-4">The following websites and domains operate under the Djangify umbrella:</p>
+                <ul class="list-disc pl-6 mb-4">
+                    <li>Djangify.com - Our main domain</li>
+                    <li>Show Your Spot - showyourspot.com</li>
+                    <li>Inspirational Guidance - inspirationalguidance.com</li> 
+                    <li>ToDiane - todiane.com</li>
+                    <li>Juice Cleanse Me - juicecleanseme.com</li>
+                    <li>AI Marketing Platform - aimarketingplatform.app</li>
+                    <li>Pen And I Publishing - penandipublishing.co.uk</li>
+                </ul>
+                <br>
+                <p class="mb-4">You can verify if a website is affiliated with Djangify by checking our <a href="https://www.djangify.com/portfolio/" class="text-accent hover:underline">portfolio page</a> or by contacting us directly at djangify@djangify.com.</p>
+            </section>
+
+            <section id="support-options" class="mb-12">
+                <h2 class="text-2xl font-bold mb-4">4. Support Options</h2>
+                <p class="mb-4">For the fastest and most effective support:</p>
+                <ul class="list-disc pl-6 mb-4">
+                    <li>First, check the documentation specific to the website you purchased from</li>
+                    <li>Each affiliated website has its own dedicated support resources</li>
+                    <li>Use the contact form on the specific website where you made your purchase</li>
+                    <li>Email the site administrator directly at admin@[sitedomain] (e.g., admin@penandipublishing.co.uk)</li>
+                    <li>You may also CC djangify@djangify.com on any support requests</li>
+                </ul>
+                <p></p>
+                <p class="mb-4">Our goal is to respond to all support inquiries within 48 hours during business days.</p>
+            </section>
+
+            <section id="contact-info" class="mb-12">
+                <h2 class="text-2xl font-bold mb-4">5. Contact Information</h2>
+                <p class="mb-4">For general inquiries or verification of Djangify-affiliated websites:</p>
+                <ul class="list-disc pl-6 mb-4">
+                    <li>Email: admin@penandipublishing.co.uk</li>
+                    {% comment %} <li>Contact Form: <a href="/#contact" class="text-accent hover:underline">Contact Us</a></li> {% endcomment %}
+                </ul>
+                <p class="mb-4">For site-specific support, please use the contact information provided on the respective website.</p>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}

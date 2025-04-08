@@ -4,7 +4,7 @@ from django.utils import timezone
 from blog.models import Post
 from django.http import HttpResponse
 from django.views.decorators.http import require_GET
-import logging
+from django.urls import reverse
 
 def home_view(request):
     # Get the latest 3 published blog posts
@@ -39,13 +39,36 @@ def notebook(request):
     }
     return render(request, 'core/paperback_notebook.html', context)
 
+
+def policies_index(request):
+    """
+    View for the index of policies page
+    """
+    breadcrumbs = [
+        {'title': 'Policies', 'url': None}
+    ]
+    
+    context = {
+        'title': 'Index of all Policies for Pen & I Publishing',
+        'meta_description': 'This is the most up to date index of all policies for our website.',
+        'breadcrumbs': breadcrumbs
+    }
+    return render(request, 'policy/policies_index.html', context)
+
+
 def privacy_policy(request):
     """
     View for the privacy policy page
     """
+    breadcrumbs = [
+        {'title': 'Policies', 'url': reverse('core:policies_index')},
+        {'title': 'Privacy Policy', 'url': None}
+    ]
+    
     context = {
         'title': 'Privacy Policy for Pen & I Publishing',
         'meta_description': 'This is the most up to date privacy policy for our website',
+        'breadcrumbs': breadcrumbs
     }
     return render(request, 'policy/privacy_policy.html', context)
 
@@ -54,9 +77,15 @@ def terms_conditions(request):
     """
     View for the terms and conditions policy page
     """
+    breadcrumbs = [
+        {'title': 'Policies', 'url': reverse('core:policies_index')},
+        {'title': 'Terms & Conditions', 'url': None}
+    ]
+    
     context = {
         'title': 'Terms and Conditions Policy for Pen & I Publishing',
         'meta_description': 'This is the most up to date terms and conditions policy for our website',
+        'breadcrumbs': breadcrumbs
     }
     return render(request, 'policy/terms_conditions.html', context)
 
@@ -64,12 +93,50 @@ def advertising_policy(request):
     """
     View for the advertising policy page
     """
+    breadcrumbs = [
+        {'title': 'Policies', 'url': reverse('core:policies_index')},
+        {'title': 'Advertising Policy', 'url': None}
+    ]
+    
     context = {
         'title': 'Advertising Policy for Pen & I Publishing',
         'meta_description': 'This is the most up to date advertising policy for our website',
+        'breadcrumbs': breadcrumbs
     }
     return render(request, 'policy/advertising_policy.html', context)
 
+def support_policy(request):
+    """
+    View for the help and support policy page
+    """
+    breadcrumbs = [
+        {'title': 'Policies', 'url': reverse('core:policies_index')},
+        {'title': 'Help & Support', 'url': None}
+    ]
+    
+    context = {
+        'title': 'Help and Support Policy for Pen & I Publishing',
+        'meta_description': 'This is the most up to date help and support policy for our website',
+        'breadcrumbs': breadcrumbs
+    }
+    return render(request, 'policy/support_policy.html', context)
+
+
+def cookies_policy(request):
+    """
+    View for the cookies policy page
+    """
+    breadcrumbs = [
+        {'title': 'Policies', 'url': reverse('core:policies_index')},
+        {'title': 'Cookies Policy', 'url': None}
+    ]
+    
+    context = {
+        'title': 'Cookies Policy for Pen & I Publishing',
+        'meta_description': 'This is the most up to date cookies policy for our website',
+        'breadcrumbs': breadcrumbs
+    }
+    return render(request, 'policy/cookies_policy.html', context)
 
 
 @require_GET
