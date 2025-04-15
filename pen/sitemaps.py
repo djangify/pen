@@ -14,7 +14,13 @@ class StaticSitemap(Sitemap):
                 'accounts:login', 'accounts:register']
 
     def location(self, item):
-        return reverse(item)
+        url = reverse(item)
+        # Remove any protocol prefix if it exists to prevent duplication
+        if url.startswith('http'):
+            url_parts = url.split('://', 1)
+            if len(url_parts) > 1:
+                return url_parts[1]
+        return url
 
 class BlogPostSitemap(Sitemap):
     changefreq = "monthly"
