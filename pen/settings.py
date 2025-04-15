@@ -20,7 +20,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, ENV_FILE))
 
 SITE_ID = 1
 
-SITE_URL = 'https://www.penandipublishing.co.uk'
+SITE_URL = 'www.penandipublishing.co.uk'
 
 SECRET_KEY = env("SECRET_KEY", default="your-secret-key-here")
 
