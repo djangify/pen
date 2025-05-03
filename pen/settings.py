@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'indexnow_django',
     'rest_framework',
     'tinymce', 
     'prompt',
@@ -177,6 +178,22 @@ EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
 CONTACT_EMAIL = env('CONTACT_EMAIL')
+
+
+# IndexNow configuration
+SITE_URL = os.getenv('SITE_URL', 'https://www.penandipublishing.co.uk')
+INDEXNOW_KEY = os.environ['INDEXNOW_KEY']  # will blow up early if missing
+
+# Which models to auto-ping via signals
+INDEXNOW_INDEXABLE_MODELS = [
+    'blog.Post',
+    'blog.Category',
+    'prompt.Prompt',
+    'prompt.PromptCategory',
+    # …etc
+]
+
+
 
 # For development only
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

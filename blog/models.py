@@ -69,6 +69,31 @@ class Post(models.Model):
     thumbnail = models.ImageField(
         upload_to="blog/thumbnails/", null=True, blank=True
     )
+    @property
+    def get_meta_title(self):
+        """Get meta title with fallback logic"""
+        return self.meta_title or self.title[:60]
+    
+    @property
+    def get_meta_description(self):
+        """Get meta description with fallback logic"""
+        if self.meta_description:
+            return self.meta_description
+        
+        # If you have an introduction/excerpt field
+        if hasattr(self, 'introduction') and self.introduction:
+            from django.utils.html import strip_tags
+            clean_intro = strip_tags(self.introduction)
+            return clean_intro[:160]
+        
+        # Fall back to content
+        if self.content:
+            from django.utils.html import strip_tags
+            clean_content = strip_tags(self.content)
+            return clean_content[:160]
+        
+        # Last resort: use title
+        return f"{self.title} - {self.category.name if hasattr(self, 'category') else ''}"[:160]
 
 
     def get_image_url(self):

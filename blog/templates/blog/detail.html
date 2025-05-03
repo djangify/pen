@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block title %}{{ post.get_meta_title }}{% endblock %}
+
+{% block meta_description %}{{ post.get_meta_description }}{% endblock %}
+
+
 {% block open_graph_tags %}
 <!-- Facebook required properties -->
 <meta property="fb:app_id" content="1196335268692565" /> 
