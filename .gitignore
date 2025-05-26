@@ -317,3 +317,10 @@ json/
 static
 .htaccess
 .vscode/
+LOCAL/
+# IndexNow files
+021048cb4f4e4ca0b6c71424a101c13a.txt
+60c58414fba74207922c46fa05a28557.txt
+
+# Or to ignore all .txt files:
+# *.txt
