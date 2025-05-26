@@ -10,6 +10,7 @@ nh3
 packaging
 pillow
 psycopg2-binary
+python-decouple
 sqlparse
 typing_extensions
 whitenoise
