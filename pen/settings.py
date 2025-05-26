@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'indexnow_django',
     'rest_framework',
     'tinymce', 
     'prompt',
@@ -60,7 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'pen.wp_redirects.EnhancedWordPressRedirectMiddleware',
+    'pen.wp_redirects.WordPressRedirectMiddleware',
 ]
 
 ROOT_URLCONF = 'pen.urls'
@@ -181,20 +180,6 @@ X_FRAME_OPTIONS = 'DENY'
 SECURE_HSTS_SECONDS = 31536000  # 1 year
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
-
-# IndexNow configuration
-SITE_URL = os.getenv('SITE_URL', 'https://www.penandipublishing.com')
-INDEXNOW_KEY = os.environ['INDEXNOW_KEY']  # will blow up early if missing
-
-# Which models to auto-ping via signals
-INDEXNOW_INDEXABLE_MODELS = [
-    'blog.Post',
-    'blog.Category',
-    'prompt.Prompt',
-    'prompt.PromptCategory',
-    # …etc
-]
-
 
 
 # For development only
