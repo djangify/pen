@@ -296,7 +296,9 @@ dist
 # media
 /media/
 
-
+.venv/
+env/
+.env/
 venv/
 __pycache__/
 *.pyc

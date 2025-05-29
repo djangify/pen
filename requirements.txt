@@ -4,13 +4,12 @@ django-environ
 django-js-asset
 djangorestframework
 django-tinymce
-django-environ
 gunicorn
 nh3
 packaging
 pillow
 psycopg2-binary
-python-decouple
+python-environ 
 sqlparse
 typing_extensions
 whitenoise

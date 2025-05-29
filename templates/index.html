@@ -3,9 +3,122 @@
 
 {% block content %}
     {% include "components/hero.html" %}
-    {% include "components/writing_tracker_info.html" %}
+   <!-- Start block -->
+    <section class="bg-gray-50 dark:bg-gray-800">
+      <div class="max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6">
+          <!-- Row -->
+          <div class="items-center gap-8 lg:grid lg:grid-cols-2 xl:gap-16">
+              <div class="text-gray-500 sm:text-lg dark:text-gray-400">
+                  <h2 class="mb-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Don't have an account yet?</h2>
+                  <p class="mb-8 font-light lg:text-lg">You can
+                    <a href="{% url 'accounts:register' %}" class="border-transparent hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-md font-bold">
+                        Sign Up for an account HERE
+                    </a>
+                - Get access to free resources. Plus:</p>
+                  <!-- List -->
+                  <ul role="list" class="pt-8 space-y-5 border-t border-gray-200 my-7 dark:border-gray-700">
+                      <li class="flex space-x-3">
+                          <!-- Icon -->
+                          <svg class="flex-shrink-0 w-5 h-5 text-purple-500 dark:text-purple-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                          <span class="text-base font-medium leading-tight text-gray-900 dark:text-white">Save the prompts you love</span>
+                      </li>
+                      <li class="flex space-x-3">
+                          <!-- Icon -->
+                          <svg class="flex-shrink-0 w-5 h-5 text-purple-500 dark:text-purple-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                          <span class="text-base font-medium leading-tight text-gray-900 dark:text-white">Create Writing Goals</span>
+                      </li>
+                      <li class="flex space-x-3">
+                          <!-- Icon -->
+                          <svg class="flex-shrink-0 w-5 h-5 text-purple-500 dark:text-purple-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                          <span class="text-base font-medium leading-tight text-gray-900 dark:text-white">Keep track of your progress.</span>
+                      </li>
+                  </ul>
+                  <p class="mb-8 font-light lg:text-lg">Everything you need to support your memoir writing and journaling habits.</p>
+              </div>
+              <img class="w-full mb-4 rounded-lg lg:mb-0 lg:flex" src="{% static 'img/feature-1.png' %}" alt="dashboard feature image">
+          </div>
+          <!-- Row -->
+          <div class="items-center gap-8 lg:grid lg:grid-cols-2 xl:gap-16">
+            <img class="hidden w-full mb-4 rounded-lg lg:mb-0 lg:flex" src="{% static 'img/feature-2.png' %}" alt="dashboard feature image">
+              <div class="text-gray-500 sm:text-lg dark:text-gray-400">
+                  <h2 class="mb-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Writing Tracker</h2>
+                  <p class="mb-8 font-light lg:text-lg">Stay on track with your goals to write your memoir and/or journal on a regular basis with our writing tracker.</p>
+                  <!-- List -->
+                  <ul role="list" class="pt-8 space-y-5 border-t border-gray-200 my-7 dark:border-gray-700">
+                      <li class="flex space-x-3">
+                          <!-- Icon -->
+                          <svg class="flex-shrink-0 w-5 h-5 text-purple-500 dark:text-purple-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                          <span class="text-base font-medium leading-tight text-gray-900 dark:text-white">Add your writing sessions</span>
+                      </li>
+                      <li class="flex space-x-3">
+                          <!-- Icon -->
+                          <svg class="flex-shrink-0 w-5 h-5 text-purple-500 dark:text-purple-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                          <span class="text-base font-medium leading-tight text-gray-900 dark:text-white">Create writing goals</span>
+                      </li>
+                      <li class="flex space-x-3">
+                          <!-- Icon -->
+                          <svg class="flex-shrink-0 w-5 h-5 text-purple-500 dark:text-purple-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                          <span class="text-base font-medium leading-tight text-gray-900 dark:text-white">Watch your monthly stats grow!</span>
+                      </li>
+                      <li class="flex space-x-3">
+                          <!-- Icon -->
+                          <svg class="flex-shrink-0 w-5 h-5 text-purple-500 dark:text-purple-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                          <span class="text-base font-medium leading-tight text-gray-900 dark:text-white">Limitless business automation</span>
+                      </li>
+                      <li class="flex space-x-3">
+                          <!-- Icon -->
+                          <svg class="flex-shrink-0 w-5 h-5 text-purple-500 dark:text-purple-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                          <span class="text-base font-medium leading-tight text-gray-900 dark:text-white">Monitor your writing sessions</span>
+                      </li>
+                  </ul>
+                  <p class="font-light lg:text-lg">Get access to this amazing writing tracker and all the other resources FREE for the first 100 members only.</p>
+              </div>
+          </div>
+      </div>
+    </section>
+  <!-- End block -->
 
-    {% include "components/latest_blog_posts.html" %}
+<!-- Latest Blog Posts Section -->
+<div class="max-w-7xl mx-auto mt-16 mb-12 px-4">
+    <h2 class="text-3xl font-bold text-center mb-8">Latest Blog Posts</h2>
+    
+    {% if latest_posts %}
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {% for post in latest_posts %}
+                <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <a href="{{ post.get_absolute_url }}" class="block">
+                        <div class="h-40 overflow-hidden">
+                            {% if post.external_image_url %}
+                                <img src="{{ post.external_image_url }}" alt="{{ post.title }}" class="w-full h-full object-cover">
+                            {% elif post.get_image_url %}
+                                <img src="{{ post.get_image_url }}" alt="{{ post.title }}" class="w-full h-full object-cover">
+                            {% elif post.youtube_url %}
+                                <img src="https://img.youtube.com/vi/{{ post.get_youtube_video_id }}/maxresdefault.jpg" 
+                                    alt="{{ post.title }}"
+                                    class="w-full h-full object-cover"
+                                    onerror="this.onerror=null; this.src='https://img.youtube.com/vi/{{ post.get_youtube_video_id }}/hqdefault.jpg';">
+                            {% endif %}
+                        </div>
+                        <div class="p-4">
+                            {% comment %} <p class="text-sm text-gray-500 mb-1">{{ post.publish_date|date:"d F Y" }}</p> {% endcomment %}
+                            <h3 class="text-lg font-bold text-gray-900 mb-2">{{ post.title }}</h3>
+                            <p class="text-md  mb-3">{{ post.content|striptags|truncatewords:15 }}</p>
+                            <span class="text-purple-700 hover:text-purple-800  text-sm font-medium">Read more →</span>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+        
+        <div class="text-center mt-8">
+            <a href="{% url 'blog:list' %}" class="inline-block text-white bg-purple-700 hover:bg-purple-800 font-medium py-3 px-6 rounded-md transition duration-200">
+                View All Articles
+            </a>
+        </div>
+    {% else %}
+        <p class="text-center text-gray-600">New articles coming soon!</p>
+    {% endif %}
+</div>
    
 <!-- Amazon section to notebooks section -->
 <!-- Start block -->
@@ -38,5 +151,87 @@
 
  
 </div>
-{% include "components/faq.html" %}
+<!-- Start block -->
+<section class="bg-white dark:bg-gray-900 mt-16">
+    <div class="max-w-screen-xl px-4 pb-8 mx-auto lg:pb-24 lg:px-6">
+        <h2 class="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+        <div class="max-w-screen-md mx-auto">
+            <div class="space-y-2">
+                <!-- Question 1 -->
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <button class="accordion-header w-full flex justify-between items-center p-6 font-medium text-left text-gray-900 focus:outline-none" data-target="accordion-body-1">
+                        <span class="text-lg">What's the difference between journal and memoir prompts?</span>
+                        <svg class="accordion-icon h-6 w-6 transform text-gray-500 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                            
+                    </button>
+                    <div id="accordion-body-1" class="accordion-content border-t border-gray-200">
+                        <div class="p-6">
+                            <p class="text-gray-500 dark:text-gray-400">Journal prompts focus on present reflections and daily experiences, while memoir prompts help you explore and capture memories from your past. Some prompts work well for both purposes.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Question 2 -->
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <button class="accordion-header w-full flex justify-between items-center p-6 font-medium text-left text-gray-900 focus:outline-none" data-target="accordion-body-2">
+                        <span class="text-lg">I didn't receive my verification email. What should I do?</span>
+                        <svg class="accordion-icon h-6 w-6 transform text-gray-500 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <div id="accordion-body-2" class="accordion-content hidden border-t border-gray-200">
+                        <div class="p-6">
+                            <p class="text-gray-500 dark:text-gray-400">Please check your spam or junk folder. If you still don't see it, you can request a new verification email by contacting us at admin@penandipublishing.co.uk.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Question 3 -->
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <button class="accordion-header w-full flex justify-between items-center p-6 font-medium text-left text-gray-900 focus:outline-none" data-target="accordion-body-3">
+                        <span class="text-lg">How does the writing progress tracker work?</span>
+                        <svg class="accordion-icon h-6 w-6 transform text-gray-500 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <div id="accordion-body-3" class="accordion-content hidden border-t border-gray-200">
+                        <div class="p-6">
+                            <p class="mb-4 text-gray-500 dark:text-gray-400">Our "Writing Progress" Tracker helps you set writing goals and record your writing sessions. It provides statistics and visualizations to monitor your progress over time.</p>
+                            <p class="mb-4 text-gray-500 dark:text-gray-400">To use the Writing Progress Tracker, select "Create New Writing Goal." Choose a goal type (time, words, or sessions), set a target value, and select a frequency (daily, weekly, or monthly).</p>
+                            <p class="mb-2 text-gray-500 dark:text-gray-400">You need to be logged in to use this feature:</p>
+                            <ul class="pl-5 text-gray-500 list-disc dark:text-gray-400 space-y-2">
+                                <li><a href="{% url 'accounts:register' %}" class="text-purple-600 dark:text-purple-500 hover:underline">SIGN UP HERE</a></li>
+                                <li><a href="{% url 'accounts:login' %}" class="text-purple-600 dark:text-purple-500 hover:underline">LOGIN HERE</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Question 4 -->
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <button class="accordion-header w-full flex justify-between items-center p-6 font-medium text-left text-gray-900 focus:outline-none" data-target="accordion-body-4">
+                        <span class="text-lg">What types of notebooks do you offer?</span>
+                        <svg class="accordion-icon h-6 w-6 transform text-gray-500 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <div id="accordion-body-4" class="accordion-content hidden border-t border-gray-200">
+                        <div class="p-6">
+                            <p class="mb-4 text-gray-500 dark:text-gray-400">We offer lined paperback journals in various designs, including general writing journals, memoir-specific notebooks, gratitude journals, and creative writing notebooks.</p>
+                            <p class="mb-4 text-gray-500 dark:text-gray-400">Our paperback notebooks are available on ALL Amazon sites including, Amazon UK and Amazon USA.</p>
+                            <p class="mb-2 text-gray-500 dark:text-gray-400">You can visit:</p>
+                            <ul class="pl-5 text-gray-500 list-disc dark:text-gray-400 space-y-2">
+                                <li><a href="https://www.amazon.co.uk/stores/Pen-And-I-Publishing/author/B0849ZQQS7" class="text-purple-600 dark:text-purple-500 hover:underline">Amazon UK</a></li>
+                                <li><a href="https://www.amazon.com/stores/Pen-And-I-Publishing/author/B0849ZQQS7" class="text-purple-600 dark:text-purple-500 hover:underline">Amazon USA</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>               
+    </div>
+  </section>
+  <!-- End block -->
 {% endblock %}
