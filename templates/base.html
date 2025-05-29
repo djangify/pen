@@ -3,15 +3,17 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
     <!-- Title -->
     <title>{% block title %}Pen And I Publishing{% endblock %}</title>
-    
     <!-- Meta Description -->
-    <meta name="description" content="{% block meta_description %}Paperback Notebooks and Journal Prompts{% endblock %}">
+    <meta
+      name="description"
+      content="{% block meta_description %}Paperback Notebooks and Journal Prompts{% endblock %}"
+    />
 
     <meta
       name="keywords"
@@ -20,7 +22,7 @@
     <meta name="author" content="Pen And I Publishing" />
 
     <!-- Open Graph / Social Media Meta Tags -->
-    <meta property="fb:app_id" content="1196335268692565" /> 
+    <meta property="fb:app_id" content="1196335268692565" />
     <meta property="og:title" content="Pen And I Publishing" />
     <meta
       property="og:description"
@@ -29,7 +31,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ request.build_absolute_uri }}" />
     <meta property="og:image" content="{% static 'img/pen-pub-purp.jpg' %}" />
-    
+
     <!-- Favicon -->
     <link
       rel="icon"
@@ -37,30 +39,59 @@
       type="image/x-icon"
     />
     <title>Pen And I Publishing - Memoir & Journal Writing Prompts</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Canonical URL - always point to .com as primary -->
+    <link
+      rel="canonical"
+      href="https://penandipublishing.com{{ request.get_full_path }}"
+    />
+
+    <!-- Hreflang tags for international targeting -->
+    <link
+      rel="alternate"
+      hreflang="en-gb"
+      href="https://penandipublishing.co.uk{{ request.get_full_path }}"
+    />
+    <link
+      rel="alternate"
+      hreflang="en-us"
+      href="https://penandipublishing.com{{ request.get_full_path }}"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://penandipublishing.com{{ request.get_full_path }}"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
     <!-- Font Awesome link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <!-- css files -->
-    <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+
+    <!--  compile Tailwind first, then custom CSS -->
     <link href="{% static 'css/output.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+
     {% block extra_meta %}{% endblock %}
     <meta name="msvalidate.01" content="DDD9205B8B331CAC1BDFE3AAB7A39E88" />
   </head>
   <body>
-    {% include 'core/partials/_messages.html' %} 
+    <header role="banner">{% include 'components/nav.html' %}</header>
 
-    {% include 'components/nav.html' %}
-    
     <main class="bg-white dark:bg-gray-900">
-      
-        {% block content %}{% endblock %}
-      
+      {% block content %}{% endblock %}
     </main>
     <!-- Footer -->
     <footer role="contentinfo">{% include 'components/footer.html' %}</footer>
 
+    {% include 'core/partials/_messages.html' %}
+    <!-- Cookie Consent Banner -->
     <!-- Cookie Consent -->
     <aside
       id="cookie-banner"
@@ -139,11 +170,11 @@
     </script>
 
     {% block extra_js %}
-      <script src="{% static 'js/main.js' %}"></script>
-      <script src="{% static 'js/category-filter.js' %}"></script>
-      <script src="{% static 'js/prompt-generator.js' %}"></script>
-      <script src="{% static 'js/favourite-prompt.js' %}"></script>
-      <script src="{% static 'js/accordion.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/category-filter.js' %}"></script>
+    <script src="{% static 'js/prompt-generator.js' %}"></script>
+    <script src="{% static 'js/favourite-prompt.js' %}"></script>
+    <script src="{% static 'js/accordion.js' %}"></script>
     {% endblock %}
   </body>
 </html>
