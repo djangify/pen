@@ -3,6 +3,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.views.static import serve
 from django.contrib.sitemaps.views import sitemap
+from core.views import webhook_handler
 from .sitemaps import (
     StaticSitemap,
     BlogPostSitemap,
@@ -19,6 +20,7 @@ sitemaps = {
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("webhook.php", webhook_handler, name="webhook_handler"),  # Add this line
     path("", include("core.urls")),
     path("accounts/", include("accounts.urls", namespace="accounts")),
     path("prompt/", include("prompt.urls")),
