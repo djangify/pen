@@ -205,9 +205,9 @@ TINYMCE_DEFAULT_CONFIG = {
     "forced_root_block": "p",
     "remove_trailing_brs": False,
     "end_container_on_empty_block": True,
-    "formats": {"p": {"block": "p", "styles": {"margin-bottom": "1.5em"}}},
     "cleanup_on_startup": True,
     "custom_undo_redo_levels": 20,
+    "block_formats": "Paragraph=p; Heading 1=h1; Heading 2=h2; Heading 3=h3; Preformatted=pre",
     "selector": "textarea",
     "theme": "silver",
     "plugins": """
@@ -218,7 +218,7 @@ TINYMCE_DEFAULT_CONFIG = {
         anchor pagebreak
         """,
     "toolbar1": """
-        fullscreen preview bold italic underline | fontselect,
+        formatselect | fullscreen preview bold italic underline | fontselect,
         fontsizeselect | forecolor backcolor | alignleft alignright |
         aligncenter alignjustify | indent outdent | bullist numlist table |
         | link image media | codesample |

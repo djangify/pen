@@ -20,7 +20,7 @@ sitemaps = {
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("webhook.php", webhook_handler, name="webhook_handler"),  # Add this line
+    path("webhook.php", webhook_handler, name="webhook_handler"),
     path("", include("core.urls")),
     path("accounts/", include("accounts.urls", namespace="accounts")),
     path("prompt/", include("prompt.urls")),

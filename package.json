@@ -1,10 +1,6 @@
 {
-  "dependencies": {
-    "@tailwindcss/cli": "^4.1.8",
-    "tailwindcss": "^4.1.8"
-  },
   "scripts": {
-    "build": "tailwindcss -i static/src/input.css -o static/css/output.css",
+    "build": "tailwindcss -i static/src/input.css -o static/css/output.css --minify",
     "watch": "tailwindcss -i static/src/input.css -o static/css/output.css --watch"
   },
   "keywords": [
@@ -15,5 +11,9 @@
   ],
   "author": "Diane Corriette",
   "license": "ISC",
-  "description": "Pen And I Publishing Journal and Memoir Prompts"
+  "description": "Pen And I Publishing Journal and Memoir Prompts",
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.16",
+    "tailwindcss": "^4.1.11"
+  }
 }
