@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
 from django.utils import timezone
-from tinymce.models import HTMLField 
+from tinymce.models import HTMLField
 
 
 class Category(models.Model):
@@ -48,14 +48,16 @@ class Post(models.Model):
 
     # Content
     content = HTMLField(verbose_name="Blog Content")
-    resource_type = models.CharField(max_length=20, choices=RESOURCE_TYPES, default="none")
-    resource_title = models.CharField(max_length=100, blank=True, help_text="Title for the downloadable resource")
+    resource_type = models.CharField(
+        max_length=20, choices=RESOURCE_TYPES, default="none"
+    )
+    resource_title = models.CharField(
+        max_length=100, blank=True, help_text="Title for the downloadable resource"
+    )
     resource = models.FileField(upload_to="blog/resources/", null=True, blank=True)
 
     # Media fields
-    image = models.ImageField(
-        upload_to="blog/images/", null=True, blank=True
-    )
+    image = models.ImageField(upload_to="blog/images/", null=True, blank=True)
     external_image_url = models.URLField(
         max_length=500,
         blank=True,
@@ -63,38 +65,40 @@ class Post(models.Model):
         help_text="External URL for product image (jpg/png only)",
     )
     youtube_url = models.URLField(blank=True, null=True)
-    thumbnail = models.ImageField(
-        upload_to="blog/thumbnails/", null=True, blank=True
-    )
-    thumbnail = models.ImageField(
-        upload_to="blog/thumbnails/", null=True, blank=True
-    )
+    thumbnail = models.ImageField(upload_to="blog/thumbnails/", null=True, blank=True)
+    thumbnail = models.ImageField(upload_to="blog/thumbnails/", null=True, blank=True)
+
     @property
     def get_meta_title(self):
         """Get meta title with fallback logic"""
         return self.meta_title or self.title[:60]
-    
+
     @property
     def get_meta_description(self):
         """Get meta description with fallback logic"""
         if self.meta_description:
             return self.meta_description
-        
+
         # If you have an introduction/excerpt field
-        if hasattr(self, 'introduction') and self.introduction:
+        if hasattr(self, "introduction") and self.introduction:
             from django.utils.html import strip_tags
+
             clean_intro = strip_tags(self.introduction)
             return clean_intro[:160]
-        
+
         # Fall back to content
         if self.content:
             from django.utils.html import strip_tags
+
             clean_content = strip_tags(self.content)
             return clean_content[:160]
-        
-        # Last resort: use title
-        return f"{self.title} - {self.category.name if hasattr(self, 'category') else ''}"[:160]
 
+        # Last resort: use title
+        return (
+            f"{self.title} - {self.category.name if hasattr(self, 'category') else ''}"[
+                :160
+            ]
+        )
 
     def get_image_url(self):
         """Get the URL for the main image"""
@@ -115,20 +119,14 @@ class Post(models.Model):
             return None
         except Exception:
             return None
-    
-
-    def get_thumbnail_url(self):
-        """Get the thumbnail URL - falls back to main image if no thumbnail"""
-        try:
-            return self.thumbnail.url if self.thumbnail else self.get_image_url()
-        except Exception:
-            return None
 
     # Advertisement fields
     ad_type = models.CharField(max_length=10, choices=AD_TYPE_CHOICES, default="none")
     ad_code = models.TextField(blank=True)
     ad_image = models.ImageField(
-        upload_to="ads/", null=True, blank=True, 
+        upload_to="ads/",
+        null=True,
+        blank=True,
     )
     ad_url = models.URLField(blank=True)
 

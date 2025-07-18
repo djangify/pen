@@ -40,6 +40,8 @@ CSRF_TRUSTED_ORIGINS = [
     "https://www.penandipublishing.co.uk",
 ]
 
+LOGIN_REDIRECT_URL = "/dashboard/"
+
 # Database
 DATABASES = {
     "default": {
