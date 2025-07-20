@@ -40,7 +40,9 @@ CSRF_TRUSTED_ORIGINS = [
     "https://www.penandipublishing.co.uk",
 ]
 
-LOGIN_REDIRECT_URL = "/dashboard/"
+LOGIN_URL = "/accounts/login/"
+LOGIN_REDIRECT_URL = "/accounts/profile/"
+LOGOUT_REDIRECT_URL = "/"
 
 # Database
 DATABASES = {
@@ -66,6 +68,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "widget_tweaks",
     "tinymce",
     "prompt",
     "accounts",

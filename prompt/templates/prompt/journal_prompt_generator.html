@@ -7,7 +7,6 @@
 
 {% block content %}
     {% include "components/prompt_hero.html" %}
-    {% include "components/writing_tracker_info.html" %}
 
     <!-- Main content section -->
     <section class="bg-white py-12">
@@ -37,8 +36,8 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Today's Prompt -->
                 <div class="bg-white rounded-lg shadow-md p-6">
-                    <h2 class="text-2xl font-bold mb-4 text-purple-600">Today's Prompt</h2>
-                    <blockquote class="relative p-4 text-xl italic border-l-4 border-purple-600 bg-blue-50 mb-6">
+                    <h2 class="text-2xl font-bold mb-4 text-purple-700">Today's Prompt</h2>
+                    <blockquote class="relative p-4 text-xl italic border-l-4 border-purple-700 bg-blue-50 mb-6">
                         <p class="mb-2">Think about a time when you overcame a significant obstacle. What strengths did you discover within yourself during that challenge? How have those strengths served you since then?</p>
                     </blockquote>
                     <div class="flex justify-between items-center mt-4">
@@ -49,27 +48,27 @@
                 
                 <!-- Recently Added Prompts -->
                 <div class="bg-white rounded-lg shadow-md p-6">
-                    <h2 class="text-2xl font-bold mb-4 text-green-600">Recently Added Prompts</h2>
+                    <h2 class="text-2xl font-bold mb-4 text-purple-700">Recently Added Prompts</h2>
                     <ul class="space-y-4">
                         <li class="border-b pb-4">
                             <p class="italic text-gray-800">Describe your ideal morning routine. What elements would make it perfect for your wellbeing and productivity?</p>
                             <div class="flex justify-between items-center mt-2">
                                 <span class="text-xs text-gray-600">Category: Daily Reflection</span>
-                                <span class="text-xs text-gray-600">Added: March 31, 2025</span>
+                                <span class="text-xs text-gray-600">Added: July 31, 2025</span>
                             </div>
                         </li>
                         <li class="border-b pb-4">
                             <p class="italic text-gray-800">What is a family tradition that has significant meaning to you? How has it shaped your identity?</p>
                             <div class="flex justify-between items-center mt-2">
                                 <span class="text-xs text-gray-600">Category: Family Memories</span>
-                                <span class="text-xs text-gray-600">Added: March 27, 2025</span>
+                                <span class="text-xs text-gray-600">Added: July 27, 2025</span>
                             </div>
                         </li>
                         <li>
                             <p class="italic text-gray-800">Write about a place you've never been but would love to visit. What draws you to this location? What would you hope to experience there?</p>
                             <div class="flex justify-between items-center mt-2">
                                 <span class="text-xs text-gray-600">Category: Lifestyle</span>
-                                <span class="text-xs text-gray-600">Added: March 22, 2025</span>
+                                <span class="text-xs text-gray-600">Added: July 22, 2025</span>
                             </div>
                         </li>
                     </ul>
@@ -79,12 +78,12 @@
     </section>
 
     <!-- Call to action section -->
-    <section class="bg-purple-600 text-white py-12">
+    <section class="bg-purple-700 text-white py-12">
         <div class="max-w-4xl mx-auto px-4 text-center">
             <h2 class="text-3xl font-bold mb-4">Start Your Writing Journey Today</h2>
             <p class="text-xl mb-8">Use our prompt generator regularly and track your progress to build a meaningful writing practice.</p>
             {% if not user.is_authenticated %}
-                <a href="{% url 'accounts:register' %}" class="inline-block bg-white text-purple-600 hover:bg-gray-100 font-bold py-3 px-6 rounded-lg transition duration-200">
+                <a href="{% url 'accounts:register' %}" class="inline-block bg-white text-purple-700 hover:bg-gray-100 font-bold py-3 px-6 rounded-lg transition duration-200">
                     Create Free Account
                 </a>
             {% else %}
@@ -94,4 +93,9 @@
             {% endif %}
         </div>
     </section>
+
+     <!-- Scripts -->
+    
+    <script src="{% static 'js/prompt-generator.js' %}"></script>
+    <script src="{% static 'js/favourite-prompt.js' %}"></script>
 {% endblock %}

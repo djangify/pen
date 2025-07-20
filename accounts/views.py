@@ -9,7 +9,6 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.conf import settings
 from django.urls import reverse
-
 from prompt.models import WritingPrompt
 from .forms import UserRegistrationForm, UserProfileForm
 from .models import EmailVerificationToken, MemberResource
@@ -113,9 +112,13 @@ def login_view(request):
             if user.is_active:
                 login(request, user)
                 messages.success(request, f"Welcome back, {username}!")
-                # Redirect to the page the user was trying to access, or home
-                next_page = request.GET.get("next", "core:home")
-                return redirect(next_page)
+
+                next_page = request.GET.get("next")
+                return (
+                    redirect(next_page)
+                    if next_page
+                    else redirect(settings.LOGIN_REDIRECT_URL)
+                )
             else:
                 messages.error(
                     request,
