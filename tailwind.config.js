@@ -3,12 +3,11 @@ module.exports = {
   content: [
     './templates/**/*.html',
     './**/templates/**/*.html',
-    './static/src/**/*.js',
+    './**/*.html',
+    './**/*.js',
   ],
   theme: {
     extend: {},
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
-}
+  plugins: [],
+};

@@ -1,0 +1,86 @@
+/* Calendar styling for the writing progress tracker */
+
+.calendar-container {
+  margin-top: 0.5rem;
+}
+
+.calendar-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-weight: 600;
+  color: #4b5563;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.25rem;
+}
+
+.calendar-cell {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.25rem;
+  position: relative;
+}
+
+.calendar-day {
+  background-color: #ffffff;
+  border-radius: 0.25rem;
+  border: 1px solid #e5e7eb;
+  font-size: 0.875rem;
+  color: #4b5563;
+  cursor: default;
+}
+
+.calendar-day:hover {
+  background-color: #f3f4f6;
+}
+
+.calendar-day.empty {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.calendar-day.today {
+  font-weight: 700;
+  border: 2px solid #3b82f6;
+}
+
+.session-count {
+  position: absolute;
+  top: 0.15rem;
+  right: 0.15rem;
+  background-color: #ef4444;
+  color: white;
+  font-size: 0.65rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .calendar-header-cell {
+    font-size: 0.75rem;
+  }
+
+  .calendar-day {
+    font-size: 0.75rem;
+  }
+
+  .session-count {
+    font-size: 0.6rem;
+    width: 0.9rem;
+    height: 0.9rem;
+  }
+}

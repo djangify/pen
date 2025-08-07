@@ -2,7 +2,36 @@
 {% load static %}
 
 {% block content %}
-    {% include "components/hero.html" %}
+   
+<section class="bg-slate-50 w-full mt-24 pt-16 pb-10 px-6 sm:px-10">
+
+  <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
+    <!-- Text Block -->
+    <div class="text-center lg:text-left">
+      <h1 class="text-3xl sm:text-5xl font-serif font-medium text-gray-900 leading-tight mt-16 mb-6">
+        Journaling and Memoir Writing Prompts:  Where Everyday Stories Become Memoir Magic
+      </h1>
+
+      <p class=" mb-8 text-gray-700 lg:mb-8 md:text-xl lg:text-xl sm:text-xl">
+         Pen & I Publishing offers journal prompts, memoir inspiration, and tools to help you turn personal memories into stories worth saving — one small moment at a time.
+      </p>
+      <!-- Buttons Block -->
+      <div class="flex flex-col sm:flex-col md:flex-row gap-4 justify-center lg:justify-start">
+        <a href="{% url 'accounts:register' %}" class="inline-block bg-purple-700 text-white text-2xl px-6 py-3 rounded hover:bg-purple-800 transition text-center">
+          Register Here
+        </a>
+        <a href="https://penandipublishing.com/blog/category/memoir-writing-tips/" class="inline-block border-2 border-purple-800 bg-purple-100 text-purple-700 text-2xl px-6 py-3 rounded hover:bg-purple-300 transition text-center">
+          Memoir Tips
+        </a>
+      </div>
+    </div>
+    <!-- Image Block -->
+    <div class="lg:mt-0">
+      <img src="{% static 'img/journal-prompts-memoir-writing.png' %}" alt="creative journal">
+    </div>
+  </div>
+</section>
+{% include "components/hero.html" %}
    <!-- Start block -->
     <section class="bg-gray-50 dark:bg-gray-800">
       <div class="max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6">
@@ -111,7 +140,7 @@
         </div>
         
         <div class="text-center mt-8">
-            <a href="{% url 'blog:list' %}" class="inline-block text-white bg-purple-700 hover:bg-purple-800 font-medium py-3 px-6 rounded-md transition duration-200">
+            <a href="{% url 'blog:list' %}" class="hover:bg-purple-900 text-white bg-purple-700 font-medium py-2 px-4 rounded-md transition duration-200">
                 View All Articles
             </a>
         </div>
@@ -133,7 +162,7 @@
                 href="https://www.amazon.co.uk/stores/Pen-And-I-Publishing/author/B0849ZQQS7" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                class="inline-block bg-purple-700 hover:bg-purple-800  text-white font-medium py-3 px-6 rounded-md transition duration-200"
+                class="hover:bg-purple-900 text-white bg-purple-700 font-medium py-2 px-4 rounded-md transition duration-200"
               >
                  Amazon UK
               </a>
@@ -141,14 +170,14 @@
               href="https://www.amazon.com/stores/Pen-And-I-Publishing/author/B0849ZQQS7" 
               target="_blank" 
               rel="noopener noreferrer" 
-              class="inline-block bg-purple-700 hover:bg-purple-800 text-white font-medium py-3 px-6 rounded-md transition duration-200"
+              class="hover:bg-purple-900 text-white bg-purple-700 font-medium py-2 px-4 rounded-md transition duration-200"
             >
                Amazon USA
             </a>
         </div>
     </div>
 </section>
-
+<div class="h-12"></div>
  
 </div>
 <!-- Start block -->
