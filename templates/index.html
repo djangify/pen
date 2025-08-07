@@ -3,20 +3,21 @@
 
 {% block content %}
    
-<section class="bg-slate-50 w-full mt-24 pt-16 pb-10 px-6 sm:px-10">
-<div class="bg-test-debug text-white p-4">Debug Box</div>
+<section class="bg-slate-50 w-full mt-16 pt-16 pb-10 px-6 sm:px-10">
+
   <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
     <!-- Text Block -->
     <div class="text-center lg:text-left">
-      <h1 class="text-3xl sm:text-5xl font-serif font-medium text-gray-900 leading-tight mt-16 mb-6">
+      <h1 class="text-2xl sm:text-5xl font-serif font-medium text-gray-900 leading-relaxed mt-8 mb-6">
         Journaling and Memoir Writing Prompts:  Where Everyday Stories Become Memoir Magic
       </h1>
 
       <p class=" mb-8 text-gray-700 lg:mb-8 md:text-xl lg:text-xl sm:text-xl">
-         Pen & I Publishing offers journal prompts, memoir inspiration, and tools to help you turn personal memories into stories worth saving — one small moment at a time.
+         Pen & I Publishing offers journal prompts, memoir inspiration, and tools to help you turn personal memories into stories worth saving, one small moment at a time.
       </p>
       <!-- Buttons Block -->
       <div class="flex flex-col sm:flex-col md:flex-row gap-4 justify-center lg:justify-start">
+        
         <a href="{% url 'accounts:register' %}" class="inline-block bg-purple-700 text-white text-2xl px-6 py-3 rounded hover:bg-purple-800 transition text-center">
           Register Here
         </a>
@@ -31,7 +32,10 @@
     </div>
   </div>
 </section>
-{% include "components/hero.html" %}
+
+      <!--journal prompt generator-->
+        {% include "components/prompt_hero.html" %}
+
    <!-- Start block -->
     <section class="bg-gray-50 dark:bg-gray-800">
       <div class="max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6">

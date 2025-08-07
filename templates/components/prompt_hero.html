@@ -1,50 +1,62 @@
-<div class="grid max-w-4xl px-4 pt-10 pb-8 mx-auto gap-4 lg:py-16">
+<div class="grid max-w-5xl px-4 pt-10 pb-8 mx-auto gap-4 lg:py-16">
   <div class="place-self-center">
-    <h1 class="text-3xl font-bold mb-6 text-center">Journal Prompt Generator</h1>
+    <div class="max-w-7xl mx-auto px-6">
+          <h2 class="text-2xl sm:text-5xl font-serif font-medium text-gray-900 text-center leading-tight mt-8 mb-6">
+        Journal Prompt Generator
+      </h2>
     <div class="text-center rounded-lg p-4">
-        <p class="py-2 lg:text-lg"> Welcome! Our journal prompt generator provides prompts for journal and memoir writing. It has been designed to spark your creativity and guide your writing practice. Choose from a variety of categories, difficulty levels, and prompt types. Whether you're looking for a quick journaling exercise or a deep dive into your memories, we've got you covered.</p>
+        <p class=" mb-8 text-gray-700 lg:mb-8 md:text-xl lg:text-xl sm:text-xl">
+        Generate focused journal and memoir writing prompts for tailored by category, time, and type. There is an option to <a href="{% url 'accounts:login' %}" class="text-slate-700 font-medium hover:text-purple-700"><i>save prompts </i>when logged in.</a> Whether you're looking for a quick journaling exercise or a deep dive into your memories, we've got you covered.
+      </p>
     </div>
   </div>
-  <div class="flex justify-center">
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6 max-w-xl mx-auto">
-        <!-- Category Filter -->
-        <div class="w-full sm:w-auto">
-            <label for="category" class="block text-md font-medium text-gray-700 mb-1 text-center">Category</label>
-            <select id="category" class="w-full h-12 text-center rounded-md border-gray-300 shadow-sm focus:ring-2 focus:ring-purple-700">
+  
+<div class="max-w-4xl mx-auto px-4 py-8 space-y-6">
+  <!-- PROMPT FILTERS -->
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end p-6 bg-white border-2 border-purple-700 rounded-md">
+    
+    <!-- Category -->
+    <div class="w-full">
+      <label for="category" class="block text-sm font-medium text-gray-700 mb-1 text-center md:text-left">Category</label>
+      <select id="category" class="w-full h-12 text-center border-gray-300 bg-purple-100 focus:ring-2 focus:ring-purple-700 rounded-md">
+        <option value="">All Categories</option>
+      </select>
+    </div>
 
-                <option value="">All Categories</option>
-                <!-- Categories will be populated by JavaScript -->
-            </select>
-        </div>
-        
-        <!-- Difficulty Filter -->
-        <div class="w-full sm:w-auto">
-            <label for="difficulty" class="block text-md font-medium text-gray-700 mb-1 text-center">Time Required</label>
-            <select id="difficulty" class="w-full h-12 text-center rounded-md border-gray-300 shadow-sm focus:ring-2 focus:ring-purple-700">
-                <option value="">Any Length</option>
-                <option value="easy">Quick (5-10 minutes)</option>
-                <option value="medium">Medium (15-20 minutes)</option>
-                <option value="deep">Deep Dive (30+ minutes)</option>
-            </select>
-        </div>
-        
-        <!-- Type Filter -->
-        <div class="w-full sm:w-auto">
-            <label for="promptType" class="block text-md font-medium text-gray-700 mb-1 text-center">Prompt Type</label>
-            <select id="promptType" class="w-full h-12 text-center rounded-md border-gray-300 shadow-sm focus:ring-2 focus:ring-purple-700">
-                <option value="">All Types</option>
-                <option value="journal">Daily Journal</option>
-                <option value="memoir">Memoir/Memory</option>
-                <option value="both">Both</option>
-            </select>
-        </div>
-        <div class="w-full flex justify-center">
-            <button id="generateBtn" class="hover:bg-purple-900 text-white bg-purple-700 font-medium py-2 px-4 rounded-md transition duration-200">
-              Generate Prompt
-            </button>
-        </div>
+    <!-- Time Required -->
+    <div class="w-full">
+      <label for="difficulty" class="block text-sm font-medium text-gray-700 mb-1 text-center md:text-left">Time Required</label>
+      <select id="difficulty" class="w-full h-12 text-center border-gray-300 bg-purple-100 focus:ring-2 focus:ring-purple-700 rounded-md">
+        <option value="">Any Length</option>
+        <option value="easy">Quick (5–10 minutes)</option>
+        <option value="medium">Medium (15–20 minutes)</option>
+        <option value="deep">Deep Dive (30+ minutes)</option>
+      </select>
+    </div>
+
+    <!-- Prompt Type -->
+    <div class="w-full">
+      <label for="promptType" class="block text-sm font-medium text-gray-700 mb-1 text-center md:text-left">Prompt Type</label>
+      <select id="promptType" class="w-full h-12 text-center border-gray-300 bg-purple-100 focus:ring-2 focus:ring-purple-700 rounded-md">
+        <option value="">All Types</option>
+        <option value="journal">Daily Journal</option>
+        <option value="memoir">Memoir/Memory</option>
+        <option value="both">Both</option>
+      </select>
+    </div>
+
+    <!-- Button -->
+    <div class="w-full">
+      <button id="generateBtn" class="w-full h-12 bg-white border-2 border-purple-700 text-purple-700 hover:bg-purple-100 hover:text-purple-900 font-semibold rounded-md transition-all">
+        Generate Prompt
+      </button>
     </div>
   </div>
+
+  <p class="text-sm text-slate-600 text-center mt-4">
+    Use the dropdowns to customise your prompt — or click ‘Generate’ for a surprise. 
+    Save the prompts you love in your account. <a href="{% url 'accounts:login' %}" class="text-purple-700 underline">Login Here</a>
+  </p>
 </div>
 
 <!-- Prompt Card - Initially hidden -->
