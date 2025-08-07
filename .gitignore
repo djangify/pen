@@ -316,7 +316,7 @@ production/
 PRODUCTION/
 .PRODUCTION/
 json/
-
+tailwindcss.exe
 .htaccess
 .vscode/
 LOCAL/

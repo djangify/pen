@@ -45,16 +45,18 @@ LOGIN_REDIRECT_URL = "/accounts/profile/"
 LOGOUT_REDIRECT_URL = "/"
 
 # Database
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": env("DATABASE_NAME"),
-        "USER": env("DATABASE_USER"),
-        "PASSWORD": env("DATABASE_PASSWORD"),
-        "HOST": env("DATABASE_HOST", default="localhost"),
-        "PORT": env("DATABASE_PORT", default="5432"),
+        "NAME": "pen_andi_db",
+        "USER": "pen_andi_user",
+        "PASSWORD": "aC0D7!}2q}~a7YU87s",
+        "HOST": "localhost",
+        "PORT": "5433",
     }
 }
+
 
 # Application definition
 

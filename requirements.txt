@@ -4,6 +4,7 @@ django-environ
 django-js-asset
 djangorestframework
 django-tinymce
+django-widget-tweaks
 gunicorn
 nh3
 packaging
