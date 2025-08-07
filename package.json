@@ -9,7 +9,12 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "tailwindcss": "^3.3.3"
+  },
   "devDependencies": {
-    "tailwindcss": "npm:@tailwindcss/cli@^4.1.11"
+    "@tailwindcss/typography": "^0.5.16",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6"
   }
 }
