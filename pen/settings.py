@@ -10,7 +10,7 @@ env = environ.Env()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # Load the .env file
 ENV_FILE = ".env"
@@ -47,11 +47,11 @@ LOGOUT_REDIRECT_URL = "/"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "pen_andi_db",
-        "USER": "pen_andi_user",
-        "PASSWORD": "aC0D7!}2q}~a7YU87s",
-        "HOST": "localhost",
-        "PORT": "5433",
+        "NAME": env("DATABASE_NAME"),
+        "USER": env("DATABASE_USER"),
+        "PASSWORD": env("DATABASE_PASSWORD"),
+        "HOST": env("DATABASE_HOST", default="localhost"),
+        "PORT": env("DATABASE_PORT", default="5432"),
     }
 }
 
