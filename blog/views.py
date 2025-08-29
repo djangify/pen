@@ -18,7 +18,6 @@ def blog_list(request):
         "categories": Category.objects.all(),
         "title": "Blog",
         "meta_description": "Posts and updates from Pen And I Publishing",
-        
     }
 
     return render(request, "blog/list.html", context)
@@ -28,9 +27,7 @@ def category_list(request, slug):
     category = get_object_or_404(Category, slug=slug)
     posts = Post.objects.filter(
         category=category, status="published", publish_date__lte=timezone.now()
-    ).order_by(
-        "-publish_date"
-    )  
+    ).order_by("-publish_date")
 
     paginator = Paginator(posts, 12)
     page = request.GET.get("page")
