@@ -99,20 +99,20 @@ pen_and_i/
 
 ## Future Development Roadmap
 
-### Phase 2 (Planned for April 2025)
-**AI-Powered Question Expander**
-- Allow users to enter basic memory prompts
-- Generate thoughtful follow-up questions using AI
-- Help users explore memories more deeply
-- Implementation using Django and OpenAI API
-
-### Phase 3 (Planned for May/June 2025)
+### Phase 2 (Planned for May/June 2025)
 **Memoir Writing Progress Tracker**
 - Set personal writing goals
 - Track progress towards writing milestones
 - Gamification elements (badges, achievements)
 - Writing streak tracking
 - Optional sharing of milestones
+
+- ### Phase 2 (Planned for tba)
+**AI-Powered Question Expander**
+- Allow users to enter basic memory prompts
+- Generate thoughtful follow-up questions using AI
+- Help users explore memories more deeply
+- Implementation using Django and OpenAI API
 
 ## Technical Stack
 
