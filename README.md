@@ -155,4 +155,5 @@ All rights reserved. This codebase is proprietary and confidential.
 
 ## Contact
 
-For any questions or feedback, please contact me - Diane Corriette - at https://www.djangify.com 
+For any questions or feedback, please contact me - Diane Corriette - at https://www.todiane.com 
+
