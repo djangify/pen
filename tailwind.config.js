@@ -1,21 +1,16 @@
-const typography = require('@tailwindcss/typography');
+import typography from "@tailwindcss/typography";
 
-module.exports = {
+/** @type {import('tailwindcss').Config} */
+export default {
   content: [
-    './templates/**/*.html',
-    './**/templates/**/*.html',
-    './static/js/**/*.js',
-    './**/*.html',
-    './**/*.js',
+    "./templates/**/*.html",
+    "./**/templates/**/*.html",
+    "./static/js/**/*.js",
+    "./**/*.html",
+    "./**/*.js",
   ],
   theme: {
-    extend: {
-      colors: {
-        primary: '#227c81',
-        secondary: '#f7f0e5',
-        accent: '#f8fafc',
-      },
-    },
+    extend: {},
   },
   plugins: [typography],
-}
+};

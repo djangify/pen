@@ -1,20 +1,10 @@
 {
-  "name": "pen",
-  "version": "1.0.0",
-  "description": "![Pen and I Publishing Logo](https://github.com/djangify/pen/blob/3cbcb0a0c28988d2c75fab1ad61e9f66c5e9619c/penandipublishing.png)",
-  "main": "index.js",
-  "scripts": {
-    "build": "npx tailwindcss -i ./static/src/input.css -o ./static/css/output.css --minify"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "tailwindcss": "^3.3.3"
-  },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.16",
-    "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.6"
+    "@tailwindcss/cli": "^4.1.17",
+    "tailwindcss": "^4.1.17"
+  },
+  "scripts": {
+    "watch": "tailwindcss -i ./static/src/input.css -o ./static/css/output.css -w",
+    "build": "tailwindcss -i ./static/src/input.css -o ./static/css/output.css -m"
   }
 }
