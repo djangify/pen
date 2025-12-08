@@ -59,6 +59,7 @@ DATABASES = {
 # Application definition
 
 INSTALLED_APPS = [
+    "adminita",
     "django.contrib.sites",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -217,10 +218,10 @@ TINYMCE_DEFAULT_CONFIG = {
     "selector": "textarea",
     "theme": "silver",
     "plugins": """
-        textcolor save link image media preview codesample contextmenu
+        save link image media preview codesample
         table code lists fullscreen insertdatetime nonbreaking
-        contextmenu directionality searchreplace wordcount visualblocks
-        visualchars code fullscreen autolink lists charmap print hr
+        directionality searchreplace wordcount visualblocks
+        visualchars autolink charmap
         anchor pagebreak
         """,
     "toolbar1": """
