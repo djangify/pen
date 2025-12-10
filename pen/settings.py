@@ -238,3 +238,5 @@ TINYMCE_DEFAULT_CONFIG = {
     "menubar": True,
     "statusbar": True,
 }
+
+from logging_config import LOGGING  # noqa: F401, E402
