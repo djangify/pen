@@ -1,26 +1,24 @@
 from pathlib import Path
-import environ
 import os
-
-
-# Initialize environment variables
-env = environ.Env()
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-# Load the .env file
-ENV_FILE = ".env"
-environ.Env.read_env(os.path.join(BASE_DIR, ENV_FILE))
+# Environment setup
+env = environ.Env(
+    DEBUG=(bool, True),
+    ALLOWED_HOSTS=(list, []),
+    CSRF_TRUSTED_ORIGINS=(list, []),
+    CORS_ALLOWED_ORIGINS=(list, []),
+)
+env.read_env(str(BASE_DIR / ".env"))
 
 SITE_ID = 1
 
-SITE_URL = "www.penandipublishing.com"
-
-SECRET_KEY = env("SECRET_KEY", default="your-secret-key-here")
+SECRET_KEY = env("SECRET_KEY", default="unsafe-secret-key-change-in-production")
+DEBUG = env("DEBUG")
+SITE_URL = env("SITE_URL", default="http://localhost:8000")
 
 ALLOWED_HOSTS = [
     "65.108.89.200",
@@ -44,17 +42,18 @@ LOGIN_URL = "/accounts/login/"
 LOGIN_REDIRECT_URL = "/accounts/profile/"
 LOGOUT_REDIRECT_URL = "/"
 
+
+# Database - SQLite default for Docker. Use in production
+# DATABASES = {"default": env.db(default="sqlite:////app/db/db.sqlite3")}
+
+
+# Database - SQLite. Use in development
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": env("DATABASE_NAME"),
-        "USER": env("DATABASE_USER"),
-        "PASSWORD": env("DATABASE_PASSWORD"),
-        "HOST": env("DATABASE_HOST", default="localhost"),
-        "PORT": env("DATABASE_PORT", default="5432"),
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "data" / "db" / "db.sqlite3",
     }
 }
-
 
 # Application definition
 
@@ -130,8 +129,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
-LANGUAGE_CODE = "en-us"
-TIME_ZONE = "UTC"
+LANGUAGE_CODE = "en-gb"
+TIME_ZONE = "Europe/London"
 USE_I18N = True
 USE_TZ = True
 
@@ -193,50 +192,82 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
-X_FRAME_OPTIONS = "DENY"
 SECURE_HSTS_SECONDS = 31536000  # 1 year
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 
 
-# For development only
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-
 # Password reset settings
 PASSWORD_RESET_TIMEOUT = 86400  # 24 hours in seconds
 
 # Add TinyMCE configuration
-TINYMCE_DEFAULT_CONFIG = {
-    "height": 660,
-    "width": "auto",
-    "forced_root_block": "p",
-    "remove_trailing_brs": False,
-    "end_container_on_empty_block": True,
-    "cleanup_on_startup": True,
-    "custom_undo_redo_levels": 20,
-    "block_formats": "Paragraph=p; Heading 1=h1; Heading 2=h2; Heading 3=h3; Preformatted=pre",
-    "selector": "textarea",
-    "theme": "silver",
-    "plugins": """
-        save link image media preview codesample
-        table code lists fullscreen insertdatetime nonbreaking
-        directionality searchreplace wordcount visualblocks
-        visualchars autolink charmap
-        anchor pagebreak
-        """,
-    "toolbar1": """
-        formatselect | fullscreen preview bold italic underline | fontselect,
-        fontsizeselect | forecolor backcolor | alignleft alignright |
-        aligncenter alignjustify | indent outdent | bullist numlist table |
-        | link image media | codesample |
-        """,
-    "toolbar2": """
-        visualblocks visualchars |
-        charmap hr pagebreak nonbreaking anchor | code |
-        """,
-    "contextmenu": "formats | link image",
-    "menubar": True,
-    "statusbar": True,
-}
 
-from logging_config import LOGGING  # noqa: F401, E402
+# ================================================================
+# TINYMCE CONFIGURATION (Self-hosted, FREE plugins only)
+# ==================================================================
+
+TINYMCE_DEFAULT_CONFIG = {
+    # Core settings
+    "height": 650,
+    "menubar": "file edit view insert format tools table help",
+    "branding": False,
+    "promotion": False,
+    # FREE plugins only - no premium plugins = no console errors
+    "plugins": [
+        "advlist",  # Advanced list formatting
+        "autolink",  # Auto-convert URLs to links
+        "lists",  # Bullet and numbered lists
+        "link",  # Insert/edit links
+        "image",  # Insert/edit images
+        "charmap",  # Special characters
+        "preview",  # Preview content
+        "anchor",  # Named anchors
+        "searchreplace",  # Find and replace
+        "visualblocks",  # Show block elements
+        "code",  # Edit HTML source
+        "fullscreen",  # Fullscreen editing
+        "insertdatetime",  # Insert date/time
+        "media",  # Embed videos
+        "table",  # Tables
+        "wordcount",  # Word count
+        "help",  # Help dialog
+    ],
+    # Toolbar configuration
+    "toolbar": (
+        "undo redo | blocks | bold italic underline strikethrough | "
+        "alignleft aligncenter alignright alignjustify | "
+        "bullist numlist outdent indent | link image media table | "
+        "code fullscreen preview | removeformat help"
+    ),
+    # Block formats (headings, paragraph, etc.)
+    "block_formats": "Paragraph=p; Heading 2=h2; Heading 3=h3; Heading 4=h4; Blockquote=blockquote; Code=pre",
+    # Image settings - allows upload and URL
+    "image_advtab": True,
+    "image_caption": True,
+    "automatic_uploads": True,
+    "file_picker_types": "image",
+    "images_upload_url": "/tinymce/upload/",  # We'll create this view
+    # Link settings
+    "link_default_target": "_blank",
+    "link_assume_external_targets": True,
+    # Content styling - uses your site's CSS
+    "content_css": "/static/css/tinymce-content.css",
+    # Clean paste from Word
+    "paste_as_text": False,
+    # Security - what HTML is allowed
+    "valid_elements": (
+        "p,br,b,strong,i,em,u,s,strike,sub,sup,"
+        "h1,h2,h3,h4,h5,h6,"
+        "ul,ol,li,"
+        "a[href|target|title],"
+        "img[src|alt|title|width|height|class],"
+        "table[border|cellspacing|cellpadding],thead,tbody,tr,th[colspan|rowspan],td[colspan|rowspan],"
+        "blockquote,pre,code,"
+        "div[class],span[class],"
+        "hr"
+    ),
+    # Relative URLs (important for portability)
+    "relative_urls": False,
+    "remove_script_host": True,
+    "document_base_url": "/",
+}

@@ -1,4 +1,5 @@
 asgiref
+adminita
 Django
 django-environ
 django-js-asset

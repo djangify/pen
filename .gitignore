@@ -326,3 +326,6 @@ LOCAL/
 .env.production
 # Or to ignore all .txt files:
 # *.txt
+data/
+data/db/
+data/media/
