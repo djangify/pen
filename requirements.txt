@@ -10,7 +10,6 @@ gunicorn
 nh3
 packaging
 pillow
-psycopg2-binary
 python-environ 
 sqlparse
 typing_extensions
