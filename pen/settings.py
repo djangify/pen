@@ -38,22 +38,18 @@ CSRF_TRUSTED_ORIGINS = [
     "https://www.penandipublishing.co.uk",
 ]
 
+# Database - SQLite default for Docker. Use in production
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
+}
+
 LOGIN_URL = "/accounts/login/"
 LOGIN_REDIRECT_URL = "/accounts/profile/"
 LOGOUT_REDIRECT_URL = "/"
 
-
-# Database - SQLite default for Docker. Use in production
-# DATABASES = {"default": env.db(default="sqlite:////app/db/db.sqlite3")}
-
-
-# Database - SQLite. Use in development
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "data" / "db" / "db.sqlite3",
-    }
-}
 
 # Application definition
 
