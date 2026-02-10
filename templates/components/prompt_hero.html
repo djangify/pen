@@ -6,7 +6,8 @@
       </h2>
     <div class=" p-4">
         <p class="mb-4 text-gray-700 text-xl">
-        Generate focused journal and memoir writing prompts for tailored by category, time, and type. There is an option to <a href="{% url 'accounts:login' %}" class="text-slate-700 font-medium hover:text-purple-700"><i>save prompts </i>when logged in.</a> Whether you're looking for a quick journaling exercise or a deep dive into your memories, we've got you covered.
+        {% comment %} Generate focused journal and memoir writing prompts for tailored by category, time, and type. </p> <p>There is an option to <a href="{% url 'accounts:login' %}" class="text-slate-700 font-medium hover:text-purple-700"><i>save prompts </i>when logged in.</a> </p> {% endcomment %}
+        <p>Whether you're looking for a quick journaling exercise or a deep dive into your memories, we've got you covered.
       </p>
     </div>
   </div>
@@ -55,7 +56,7 @@
 
   <p class="text-sm text-slate-600 text-center mt-4">
     Use the dropdowns to customise your prompt — or click ‘Generate’ for a surprise. 
-    Save the prompts you love in your account. <a href="{% url 'accounts:login' %}" class="text-purple-700 underline">Login Here</a>
+    {% comment %} Save the prompts you love in your account. <a href="{% url 'accounts:login' %}" class="text-purple-700 underline">Login Here</a> {% endcomment %}
   </p>
 </div>
 
